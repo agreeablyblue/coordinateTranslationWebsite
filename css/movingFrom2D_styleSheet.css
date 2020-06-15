@@ -68,8 +68,9 @@ ul.navMenu{
 }
 
 .contentWrapper{
-  margin:0 5vw 0 5vw;
+  margin:0 22vw 0 22vw;
   font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  font-size: 17px;
 }
 
 .threeRotationMatrices{
@@ -77,6 +78,9 @@ ul.navMenu{
   justify-content: center;
 }
 
+.footnotes li{
+  color: #b2b2b2;
+}
 header h2{
   color: black;
   font-weight: 1000;
