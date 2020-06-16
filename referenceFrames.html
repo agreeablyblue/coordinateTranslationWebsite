@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Coordinate Translations</title>
-  <link rel="stylesheet" href="css/index_styleSheet.css">
+  <link rel="stylesheet" href="css/referenceFrames_styleSheet.css">
   <title>Document</title>
 </head>
 
@@ -34,7 +34,7 @@
 
 <div class="contentWrapper">
   <h1 id="introduction">Introduction</h1>
-    <p>In the previous chapter, we discussed Cartesian coordinate frames and frame transforms in 2-D. However, we live in a 3-D world, so we need to understand more complex rotations than what was discussed in the previous chapter. Before jumping into full 3-D rotations, however, letΓÇÖs discuss what our 2-D rotations look like in a 3-D coordinate frame. In 2-D, we have two axes <span class="math inline"><strong>e</strong><sub>1</sub></span> and <span class="math inline"><strong>e</strong><sub>2</sub></span>. If we add a third axis, <span class="math inline"><strong>e</strong><sub>3</sub></span> that is unit length and orthogonal to the first two vectors, then we have a 3-D Cartesian coordinate system. This is visualized in Figure┬á<a href="#fig:simple3D" data-reference-type="ref" data-reference="fig:simple3D">[fig:simple3D]</a>(a). For notational convenience, the first, second, and third axis in 3-D is commonly referred to as the <span class="math inline"><em>x</em></span>, <span class="math inline"><em>y</em></span>, and <span class="math inline"><em>z</em></span> axes, respectively.</p>
+    <p>In the previous chapter, we discussed Cartesian coordinate frames and frame transforms in 2-D. However, we live in a 3-D world, so we need to understand more complex rotations than what was discussed in the previous chapter. Before jumping into full 3-D rotations, however, let's discuss what our 2-D rotations look like in a 3-D coordinate frame. In 2-D, we have two axes <span class="math inline"><strong>e</strong><sub>1</sub></span> and <span class="math inline"><strong>e</strong><sub>2</sub></span>. If we add a third axis, <span class="math inline"><strong>e</strong><sub>3</sub></span> that is unit length and orthogonal to the first two vectors, then we have a 3-D Cartesian coordinate system. This is visualized in <b>Figure 1 (a)</b>. For notational convenience, the first, second, and third axis in 3-D is commonly referred to as the <span class="math inline"><em>x</em></span>, <span class="math inline"><em>y</em></span>, and <span class="math inline"><em>z</em></span> axes, respectively.</p>
     <p>Unfortunately, while 2-D rotations can be simply parameterized by a single scalar, 3-D rotations are significantly more complex, leading to a wide variety of possible <em>representations</em> of rotations. In this chapter, we will discuss several different parameterizations of rotation in 3-D. The order in which these representations are introduced is pedagogical (we hope!) but does not convey relative importance or utility.</p>
     <p>Specifically, we will describe the following representations of rotations in 3-D:</p>
     <ul>
@@ -44,66 +44,105 @@
     <li><p>Axis-angle and Rodrigues parameters</p></li>
     <li><p>Quaternions</p></li>
     </ul>
-    <p>Note that there are mappings that exist between any one of these representations and all the others. For the most part, however, we will not be describing the conversions in this set of papers. Instead, we want you to have an intuitive-enough understand of each representation that when you implement a specific conversion (as copied from Wikipedia or some other ΓÇ£reliableΓÇ¥ source, you can double-check to make sure things are actually equivalent).</p>
+    <p>Note that there are mappings that exist between any one of these representations and all the others. For the most part, however, we will not be describing the conversions in this set of papers. Instead, we want you to have an intuitive-enough understand of each representation that when you implement a specific conversion (as copied from Wikipedia or some other <i><b>reliable</b></i> source, you can double-check to make sure things are actually equivalent).</p>
+
+    <br>
+    <img src="images/referenceFrames/report2_example1.png" width="787" height="365" alt="Example 1" style = "border:2px solid black; display:block; margin-left: auto; margin-right: auto;"/>
+    <br>
+    <br>
+    <hr/>
+
     <h1 id="euler-rotations">Euler Rotations</h1>
-    <p>With a third basis vector added to the coordinate frame, the rotation that we performed in the first chapter can now be visualized, not as an abstract rotation, but as a specific rotation ΓÇ£aroundΓÇ¥ the third axis. In Figure┬á<a href="#fig:simple3D" data-reference-type="ref" data-reference="fig:simple3D">[fig:simple3D]</a>, we show both a ΓÇ£leftΓÇ¥ and ΓÇ£rightΓÇ¥-handed rotation about <span class="math inline"><strong>e</strong><sub>3</sub></span>. This can be viewed as putting your thumb in the same direction as axis <span class="math inline"><strong>e</strong><sub>3</sub></span> and the direction your fingers point is the way a ΓÇ£positiveΓÇ¥ rotation will occur.</p>
-    <p>The mathematical representation of this rotation is very similar to what we had in 2-D, namely: <br /><span class="math display">$$C_3(\theta) = \begin{bmatrix}\cos\theta &amp; \sin\theta &amp; 0\\-\sin\theta &amp; \cos\theta &amp; 0 \\
-        0  &amp; 0 &amp; 1
-        \end{bmatrix}
-        \label{eq:rotZ}$$</span><br /> Note that this represents a ΓÇ£rightΓÇ¥-handed rotation about the <span class="math inline"><em>z</em></span> axis.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> It is also denoted as <span class="math inline"><em>C</em><sub>3</sub></span> to show that we are rotating about the third axis.</p>
+    <p>With a third basis vector added to the coordinate frame, the rotation that we performed in the first chapter can now be visualized, not as an abstract rotation, but as a specific rotation around the third axis. In Figure 1, we show both a "left" and a "right"-handed rotation about <span class="math inline"><strong>e</strong><sub>3</sub></span>. This can be viewed as putting your thumb in the same direction as axis <span class="math inline"><strong>e</strong><sub>3</sub></span> and the direction your fingers point is the way a "positive" rotation will occur.</p>
+    <p>The mathematical representation of this rotation is very similar to what we had in 2-D, namely:
+    <br>
+    <br>
+    <img src="images/referenceFrames/matrix_example1.png" width="287" height="96" alt="Example 1" style = "border:2px solid black; display:block; margin-left: auto; margin-right: auto;"/>
+
+  </span><br /> Note that this represents a "right"-handed rotation about the <span class="math inline"><em>z</em></span> axis.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> It is also denoted as <span class="math inline"><em>C</em><sub>3</sub></span> to show that we are rotating about the third axis.</p>
     <p>If, instead, we wanted to rotate about a different axis, we could follow a very similar pattern, namely:<br />
-    <strong>Rotation about <span class="math inline"><em>x</em></span>:</strong> <br /><span class="math display">$$C_1(\theta) = \begin{bmatrix}1 &amp; 0 &amp; 0\\
-        0 &amp; \cos\theta &amp; \sin\theta \\0 &amp; -\sin\theta &amp; \cos\theta
-        \end{bmatrix}
-        \label{eq:rotX}$$</span><br /><br />
-    <strong>Rotation about <span class="math inline"><em>y</em></span>:</strong> <br /><span class="math display">$$C_2(\theta) = \begin{bmatrix}\cos\theta &amp; 0 &amp; -\sin\theta\\
-        0 &amp; 1 &amp; 0\\
-        \sin\theta &amp; 0 &amp; \cos\theta
-        \end{bmatrix}
-        \label{eq:rotY}$$</span><br /></p>
-    <p>There is a pattern to these matrices that is worth discussing. First, the axis which is being rotated about has a column and row with two <span class="math inline">0</span>s and one <span class="math inline">1</span>. So, equations <a href="#eq:rotX" data-reference-type="eqref" data-reference="eq:rotX">[eq:rotX]</a>, <a href="#eq:rotY" data-reference-type="eqref" data-reference="eq:rotY">[eq:rotY]</a>, and <a href="#eq:rotZ" data-reference-type="eqref" data-reference="eq:rotZ">[eq:rotZ]</a> represent (right-handed) rotations around the <span class="math inline"><em>x</em></span>, <span class="math inline"><em>y</em></span>, and <span class="math inline"><em>z</em></span> axes, respectively. Second, because these are right-handed rotations, the row right after the axis being rotated over has the positive <span class="math inline">sinΓÇå<em>╬╕</em></span> term, and the line after that has the negative term. For Equations <a href="#eq:rotX" data-reference-type="eqref" data-reference="eq:rotX">[eq:rotX]</a> and <a href="#eq:rotZ" data-reference-type="eqref" data-reference="eq:rotZ">[eq:rotZ]</a> this is easy to see. For Equation┬á<a href="#eq:rotY" data-reference-type="eqref" data-reference="eq:rotY">[eq:rotY]</a>, note that the 3rd row comes after the <span class="math inline"><em>y</em></span> row, and it has a positive <span class="math inline">sinΓÇå<em>╬╕</em></span> term, while the first row (following the third row) has the <span class="math inline">ΓÇàΓêÆΓÇàsinΓÇå<em>╬╕</em></span> value.</p>
-    <p>Tying back into chapter one, note that all of these rotations are assumed to be <em>reference frame</em> rotations and not object rotations. If they were object rotations, the rows following the axis being rotated around would have <span class="math inline">ΓÇàΓêÆΓÇàsinΓÇå</span> values.</p>
-    <h2 id="other-properties-of-3-d-axes.">Other properties of 3-D axes.</h2>
-    <p>So far, we have talked about ΓÇ£addingΓÇ¥ another axis to move from 2-D to 3-D. This new axis has to meet some requirements though. First, it has to be unit length and orthogonal to the first two axes. This leads us with two choices, leading us to the second constraint. Second, the axes must form a ΓÇ£right-handedΓÇ¥ set of axes<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. Mathematically, this is defined as putting the three axes in a matrix and making sure the matrix has a determinate of +1 (<em>not</em> -1). Conceptually, it is called a right-handed coordinate system because if you cross-product the x and y axes together, you can use your right hand to determine the direction of the z-axis. If you start with your fingers pointing in the direction of the x axis and orient your hand such that your fingers curl towards the y axis, your thumb will be pointing in the direction of the z axis.</p>
-    <p>So, consider Figure┬á<a href="#fig:simple3D" data-reference-type="ref" data-reference="fig:simple3D">[fig:simple3D]</a>(a). This is a right-handed coordinate system because <span class="math inline"><strong>e</strong><sub>1</sub>ΓÇà├ùΓÇà<strong>e</strong><sub>2</sub></span>, where <span class="math inline">├ù</span> represents the cross product, leads to the 3rd axis coming out of the page towards you. If instead it went ΓÇ£intoΓÇ¥ the page, then it would be a left-handed coordinate system.</p>
-    <p>Note that a right-handed coordinate system has the following three properties:</p>
-    <ol>
-    <li><p><span class="math inline"><strong>e</strong><sub>1</sub>ΓÇà├ùΓÇà<strong>e</strong><sub>2</sub>ΓÇä=ΓÇä<strong>e</strong><sub>3</sub></span></p></li>
-    <li><p><span class="math inline"><strong>e</strong><sub>2</sub>ΓÇà├ùΓÇà<strong>e</strong><sub>3</sub>ΓÇä=ΓÇä<strong>e</strong><sub>1</sub></span></p></li>
-    <li><p><span class="math inline"><strong>e</strong><sub>3</sub>ΓÇà├ùΓÇà<strong>e</strong><sub>1</sub>ΓÇä=ΓÇä<strong>e</strong><sub>2</sub></span></p></li>
-    </ol>
-    <p>If one is satisfied, all three properties are satisfied, but it is worth knowing that any two vectors imposes a directionality constraint on the other vectors.</p>
-    <h2 id="creating-a-full-rotation-in-3-d">Creating a full rotation in 3-D</h2>
-    <p>While so far we have implemented 2-D rotations, but in a 3-D coordinate system, what we would really like to do is create a full 3-D rotations. Luckily, any 3-D rotation can be decomposed into a set of three 2-D rotations in sequence. So, for example, we could first rotate about the <span class="math inline"><em>z</em></span> axis, followed by a rotation about the <span class="math inline"><em>y</em></span> axis, and then the <span class="math inline"><em>x</em></span> axis. The full rotation would be: <br /><span class="math display"><em>C</em><sub>1</sub><em>C</em><sub>2</sub><em>C</em><sub>3</sub></span><br /> and is termed a 3-2-1 rotation because we rotate about the 3rd axis first. Note, however, that in the equation the rotations matrices are ordered 1,2,3. This is because when there is a position (a vector), it will be on the right of the matrices, so the multiplication essentially goes from right to left (3-2-1). Just remember that the math expressed things from right to left (imagine the vector running through the matrices; the vector starts on the right), while we describe it in written format from left-to-right.</p>
-    <p>This notation actually introduces 12(!) different ways we can express a 3-D rotation. Any 3-D rotation can be expressed as a sequence of three axis rotations. If two rotations in a row use the same axis, they are redundant, so we have all rotations i-j-k, where i,j,k are either 1,2, or 3 and both <span class="math inline"><em>i</em>ΓÇäΓëáΓÇä<em>j</em></span> and <span class="math inline"><em>j</em>ΓÇäΓëáΓÇä<em>k</em></span>. More precisely, the following ordered sets of rotations about an axis are all valid representations of a rotation in 3-D:</p>
-    <p><span>|g|g|c|c|</span>-2-1 &amp; 1-3-1 &amp; 1-2-3 &amp; 1-3-2<br />
-    -1-2 &amp; 2-3-2 &amp; 2-1-3 &amp; 2-3-1<br />
-    -1-3 &amp; 3-2-3 &amp; 3-1-2 &amp; 3-2-1<br />
-    </p>
-    <p>A few comments are in order on these rotations:</p>
-    <ol>
-    <li><p><em>THE ORDER IN WHICH THE OPERATIONS OCCURS MATTERS!</em> Sorry for shouting, but it is a very important point and can catch up even experienced rotation experts on occasion. With the exact same angles around the three axes, a 1-2-3 rotation will be very different from a 3-2-1 rotation. So, a 1-2-3 rotation of 30, 40, and 25 degrees is <em>not</em> the same as a 3-2-1 rotation of 25, 40, and 30 degrees.</p></li>
-    <li><p>The shaded rotations on the left are interesting because they repeat one of the axes. The ones on the right differ only in their ordering of the 3 unique axes.</p></li>
-    <li><p>While the representation may be very different, they all represent the same physical phenomenon, a rotation in 3-D space. So, for example, a 1-2-3 rotation of 30, 40, and 25 degrees.</p></li>
-    </ol>
-    <p>First, letΓÇÖs discuss why different orderings lead to different representations of the same rotation. Consider Figure┬á<a href="#fig:rotOrdering" data-reference-type="ref" data-reference="fig:rotOrdering">[fig:rotOrdering]</a> (a-c) which shows just two rotations in a row (3-2), the rotation around axis 3 being 30 degrees and the rotation around axis 2 being 40 degrees. Then in Figure┬á<a href="#fig:rotOrdering" data-reference-type="ref" data-reference="fig:rotOrdering">[fig:rotOrdering]</a>, the same to axis rotations are applied, but in the opposite order (axis 2 by 40 degrees, axis 3 by 30 degrees). Note that the after rotation around axis 2 by 40 degrees, axis 3 is in a different location (figure(d)) then it is in figure(a). This means that the same rotation by 30 degrees around axis 3 leads to very different rotations in the world. This is the reason why the ordering of the axes is critical. Therefore, a (3-2-1) rotation will be very different from a (1-2-3) rotation, even if the angles applied to each axis are the same in both rotations.</p>
-    <p>These pictures stink! Do I want to work on them or just go straight to a webpage version???</p>
-    <h1 id="yaw-pitch-roll-ypr">Yaw-Pitch-Roll (YPR)</h1>
-    <p>Obviously, having 12 different possible rotations orders, where the same set of 3 numbers can mean one of 12 different things, does not lead to conciseness and clarity. There is one set of rotations, closely related to Euler angles, that has a basis is the real world and is often used. This is to define all rotations in terms of three angles: yaw, pitch, and roll. These angles have physical meanings, which I find most easily explained in terms of a fixed-wing airplane. A (0,0,0) rotation is when the airplane is perfectly flat and headed straight North. Rotations from that position are as follows:</p>
-    <ul>
-    <li><p>Yaw. This angle represents what ΓÇ£directionΓÇ¥ the aircraft is pointed if projected onto a 2-D map. North is 0 degrees, and positive angles move from North to East. So, 0 degree=North, 45 = NOrthEast, 90 = East, 180 = South, and -90 degrees is west. (For those aeronautical types out there, this is the direction the plane is physically pointing, not actually moving if there is a cross-wind or other disturbances.)</p></li>
-    <li><p>Pitch. This is the angle of the airplane nose <em>above</em> the horizontal plane in which Yaw is defined. So, 0 degrees means an aircraft is perfectly level, 10 degrees means it is pointed up by 10 degrees, while -20 means the aircraft is pointed down.</p></li>
-    <li><p>Roll. After yaw and pitch, the roll angle tells how far below the horizontal plane the right wing is. So, 10 degrees of roll would mean that the plane is ΓÇ£bankedΓÇ¥ to the right (and usually will turn right). Negative roll angles means the aircraft is banked to the left.</p></li>
-    </ul>
-    <h2 id="relationship-between-ypr-and-euler-angles">Relationship between YPR and Euler Angles</h2>
-    <p>Note that Yaw, Pitch, and Roll are very similar to Euler angles. In fact, if your coordinate system is defined as North (x), East(y), and Down(z) axes, then yaw is a right-handed rotation about the 3rd (z) axis, pitch about the y axis, and roll about the x axis, making YPR and 3-2-1 rotation around the North-East-Down (NED) axes. While this is very convenient, not all people like the NED axes, particularly because the to go up, the <span class="math inline"><em>z</em></span> numbers have to go down, which can be counter-intuitive. So, some people like east-north-up (ENU), or north-west-up (NWU). In both these cases, there is now not a simple mapping to</p>
+    <strong>Rotation about <span class="math inline"><em>x</em></span>:</strong>
+    <br />
+    <br>
+    <img src="images/referenceFrames/matrix_example2.png" width="284" height="95" alt="Example 1" style = "border:2px solid black; display:block; margin-left: auto; margin-right: auto;"/>
+    <br>
+    <strong>Rotation about <span class="math inline"><em>y</em></span>:</strong> <br />
+    <br>
+    <img src="images/referenceFrames/matrix_example3.png" width="289" height="97" alt="Example 1" style = "border:2px solid black; display:block; margin-left: auto; margin-right: auto;"/>
+    <br>
+    <p>There is a pattern to these matrices that is worth discussing.  First, the axis which is being rotated about has a column and row with two 0s and one 1.  So, equations <b>(2)</b>, <b>(3)</b>, and <b>(1)</b> represent (right-handed) rotations around the <b>x</b>, <b>y</b>, and <b>z</b> axes, respectively.  Second, because these are right-handed rotations, the row right after the axis being rotated over has the positive sin θ term, and the line after that has the negative term.  For Equations <b>(2)</b> and <b>(1)</b> this is easy to see.  For Equation <b>(3)</b>, note that the 3rd row comes after the <b>y</b> row, and it has a positive sin θ term, while the first row (following the third row) has the − sin θ  value.</p>
+    <p>Tying back into chapter one, note that all of these rotations are assumed to be <em>reference frame</em> rotations and not object rotations. If they were object rotations, the rows following the axis being rotated around would have - sin values.</p>
+
     <section class="footnotes" role="doc-endnotes">
     <hr />
     <ol>
-    <li id="fn1" role="doc-endnote"><p>Right-handed rotations are the standard, for reasons that will be discussed later.<a href="#fnref1" class="footnote-back" role="doc-backlink">Γå⌐∩╕Ä</a></p></li>
-    <li id="fn2" role="doc-endnote"><p>We will discuss in more detail why this constraint is important when we get to DCM-based representations of rotation<a href="#fnref2" class="footnote-back" role="doc-backlink">Γå⌐∩╕Ä</a></p></li>
+    <li id="fn1" role="doc-endnote"><p>Right-handed rotations are the standard, for reasons that will be discussed later.</p></li>
     </ol>
     </section>
+
+    <br>
+
+
+    <h2 id="other-properties-of-3-d-axes.">Other properties of 3-D axes.</h2>
+    <p>So far, we have talked about "adding" another axis to move from 2-D to 3-D. This new axis has to meet some requirements though. First, it has to be unit length and orthogonal to the first two axes. This leads us with two choices, leading us to the second constraint. Second, the axes must form a "right-handed" set of axes<sup><b>1</b></sup>. Mathematically, this is defined as putting the three axes in a matrix and making sure the matrix has a determinate of +1 (<em>not</em> -1). Conceptually, it is called a right-handed coordinate system because if you cross-product the x and y axes together, you can use your right hand to determine the direction of the z-axis. If you start with your fingers pointing in the direction of the x axis and orient your hand such that your fingers curl towards the y axis, your thumb will be pointing in the direction of the z axis.</p>
+    <p>So, consider <b>Figure 1 (a)</b>. This is a right-handed coordinate system because <b>e<sub>1</sub></b> x <b>e<sub>2</sub></b>, where <b>x</b> represents the cross product, leads to the 3rd axis coming out of the page towards you. If instead it went "into" the page, then it would be a left-handed coordinate system.</p>
+    <p>Note that a right-handed coordinate system has the following three properties:</p>
+    <ol>
+    <li> <b>e<sub>1</sub></b> x <b>e<sub>2</sub></b> = <b>e<sub>3</sub></b> </li>
+    <li> <b>e<sub>2</sub></b> x <b>e<sub>3</sub></b> = <b>e<sub>1</sub></b> </li>
+    <li> <b>e<sub>3</sub></b> x <b>e<sub>1</sub></b> = <b>e<sub>2</sub></b> </li>
+    </ol>
+    <p>If one is satisfied, all three properties are satisfied, but it is worth knowing that any two vectors imposes a directionality constraint on the other vectors.</p>
+
+    <br>
+    <section class="footnotes" role="doc-endnotes">
+    <hr/>
+    <ol>
+    <li id="fn2" role="doc-endnote"><p>We will discuss in more detail why this constraint is important when we get to DCM-based representations of rotation</p></li>
+    </ol>
+    </section>
+
+
+    <br>
+
+
+    <h2 id="creating-a-full-rotation-in-3-d">Creating a full rotation in 3-D</h2>
+    <p>While so far we have implemented 2-D rotations, but in a 3-D coordinate system, what we would really like to do is create a full 3-D rotations. Luckily, any 3-D rotation can be decomposed into a set of three 2-D rotations in sequence. So, for example, we could first rotate about the <span class="math inline"><em>z</em></span> axis, followed by a rotation about the <span class="math inline"><em>y</em></span> axis, and then the <span class="math inline"><em>x</em></span> axis. The full rotation would be: <br /><span class="math display"><em>C</em><sub>1</sub><em>C</em><sub>2</sub><em>C</em><sub>3</sub></span><br /> and is termed a 3-2-1 rotation because we rotate about the 3rd axis first. Note, however, that in the equation the rotations matrices are ordered 1,2,3. This is because when there is a position (a vector), it will be on the right of the matrices, so the multiplication essentially goes from right to left (3-2-1). Just remember that the math expressed things from right to left (imagine the vector running through the matrices; the vector starts on the right), while we describe it in written format from left-to-right.</p>
+    <p>This notation actually introduces 12(!) different ways we can express a 3-D rotation. Any 3-D rotation can be expressed as a sequence of three axis rotations. If two rotations in a row use the same axis, they are redundant, so we have all rotations i-j-k, where i,j,k are either 1,2, or 3 and both i <span>&#8800;</span> j and j <span>&#8800;</span> k. More precisely, the following ordered sets of rotations about an axis are all valid representations of a rotation in 3-D:</p>
+
+    <img src="images/referenceFrames/table_image.png" width="292" height="79" alt="Example 1" style = "border:2px solid black; display:block; margin-left: auto; margin-right: auto;"/>
+
+
+    <p>A few comments are in order on these rotations:</p>
+    <ol>
+    <li><p><em><b>THE ORDER IN WHICH THE OPERATIONS OCCURS MATTERS!</em></b> Sorry for shouting, but it is a very important point and can catch up even experienced rotation experts on occasion. With the exact same angles around the three axes, a 1-2-3 rotation will be very different from a 3-2-1 rotation. So, a 1-2-3 rotation of 30, 40, and 25 degrees is <em>not</em> the same as a 3-2-1 rotation of 25, 40, and 30 degrees.</p></li>
+    <li><p>The shaded rotations on the left are interesting because they repeat one of the axes. The ones on the right differ <b>only</b> in their ordering of the 3 unique axes.</p></li>
+    <li><p>While the representation may be very different, they all represent the same physical phenomenon, a rotation in 3-D space. So, for example, a 1-2-3 rotation of 30, 40, and 25 degrees.</p></li>
+    </ol>
+    <p>First, let's discuss why different orderings lead to different representations of the same rotation. Consider <b>Figure 2 (a-c)</b> which shows just two rotations in a row (3-2), the rotation around axis 3 being 30 degrees and the rotation around axis 2 being 40 degrees. Then in <b>Figure 2</b>, the same two axis rotations are applied, but in the opposite order (axis 2 by 40 degrees, axis 3 by 30 degrees). Note that the after rotation around axis 2 by 40 degrees, axis 3 is in a different location (figure(d)) then it is in figure(a). This means that the same rotation by 30 degrees around axis 3 leads to very different rotations in the world. This is the reason why the ordering of the axes is critical. Therefore, a (3-2-1) rotation will be very different from a (1-2-3) rotation, even if the angles applied to each axis are the same in both rotations.</p>
+
+    <br>
+    <img src="images/referenceFrames/report2_example2.png" width="789" height="355" alt="Example 2" style = "border:2px solid black; display:block; margin-left: auto; margin-right: auto;"/>
+    <br>
+    <br>
+    <hr/>
+
+    <h1 id="yaw-pitch-roll-ypr">Yaw-Pitch-Roll (YPR)</h1>
+    <p>Obviously, having 12 different possible rotations orders, where the same set of 3 numbers can mean one of 12 different things, does not lead to conciseness and clarity. There is one set of rotations, closely related to Euler angles, that has a basis is the real world and is often used. This is to define all rotations in terms of three angles: yaw, pitch, and roll. These angles have physical meanings, which I find most easily explained in terms of a fixed-wing airplane. A (0,0,0) rotation is when the airplane is perfectly flat and headed straight North. Rotations from that position are as follows:</p>
+    <ul>
+    <li><p>Yaw. This angle represents what "direction" the aircraft is pointed if projected onto a 2-D map. North is 0 degrees, and positive angles move from North to East. So, 0 degree=North, 45 = NOrthEast, 90 = East, 180 = South, and -90 degrees is west. (For those aeronautical types out there, this is the direction the plane is physically pointing, not actually moving if there is a cross-wind or other disturbances.)</p></li>
+    <li><p>Pitch. This is the angle of the airplane nose <em>above</em> the horizontal plane in which Yaw is defined. So, 0 degrees means an aircraft is perfectly level, 10 degrees means it is pointed up by 10 degrees, while -20 means the aircraft is pointed down.</p></li>
+    <li><p>Roll. After yaw and pitch, the roll angle tells how far below the horizontal plane the right wing is. So, 10 degrees of roll would mean that the plane is "banked" to the right (and usually will turn right). Negative roll angles means the aircraft is banked to the left.</p></li>
+    </ul>
+
+    <br>
+    <hr/>
+
+    <h2 id="relationship-between-ypr-and-euler-angles">Relationship between YPR and Euler Angles</h2>
+    <p>Note that Yaw, Pitch, and Roll are very similar to Euler angles. In fact, if your coordinate system is defined as North (x), East(y), and Down(z) axes, then yaw is a right-handed rotation about the 3rd (z) axis, pitch about the y axis, and roll about the x axis, making YPR and 3-2-1 rotation around the North-East-Down (NED) axes. While this is very convenient, not all people like the NED axes, particularly because the to go up, the <span class="math inline"><em>z</em></span> numbers have to go down, which can be counter-intuitive. So, some people like east-north-up (ENU), or north-west-up (NWU). In both these cases, there is now not a simple mapping to</p>
+    <br>
+    <br>
+    <hr/>
 
 </div>
 </body>
