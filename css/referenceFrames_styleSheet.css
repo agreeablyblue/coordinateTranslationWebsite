@@ -67,6 +67,26 @@ ul.navMenu{
   color: black;
 }
 
+#myBtn {
+  display: none; /* Hidden by default */
+  position: fixed; /* Fixed/sticky position */
+  bottom: 35px; /* Place the button at the bottom of the page */
+  right: 45px; /* Place the button 30px from the right */
+  z-index: 99; /* Make sure it does not overlap */
+  border: none; /* Remove borders */
+  outline: none; /* Remove outline */
+  background-color: #508DB9; /* Set a background color */
+  color: #fff; /* Text color */
+  cursor: pointer; /* Add a mouse pointer on hover */
+  padding: 15px; /* Some padding */
+  border-radius: 10px; /* Rounded corners */
+  font-size: 18px; /* Increase font size */
+}
+
+#myBtn:hover {
+  color: black;
+}
+
 .contentWrapper{
   margin:0 22vw 0 22vw;
   font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
@@ -79,7 +99,7 @@ ul.navMenu{
 }
 
 .footnotes li{
-  color: #b2b2b2;
+  color: #8c8c8c;
 }
 header h2{
   color: black;
