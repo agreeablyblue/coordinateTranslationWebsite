@@ -5,18 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Coordinate Translations</title>
-  <link rel="stylesheet" href="css/movingFrom2D_styleSheet.css">
-  <title>Document</title>
+  <link rel="stylesheet" href="../css/reference_Frames.css">
+  <title>Reference Frames</title>
 </head>
 
 <body>
 
-
-
 <div class="wrapper">
 
   <div class="antLogo">
-    <img src="images/ANTLogo.png" width="125" height="125" alt="ANT Center Logo" />
+    <img src="../images/ANTLogo.png" width="125" height="125" alt="ANT Center Logo" />
   </div>
 
     <header class = "header1">
@@ -26,9 +24,9 @@
 
     <nav>
       <ul class = "navMenu">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="movingFrom2D.html">Moving from 2-D</a></li>
-        <li><a href="referenceFrames.html">2-d Reference Frames</a></li>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="reference_Frames.html">Reference Frames</a></li>
+        <li><a href="moving_From_2D.html">Moving From 2D</a></li>
       </ul>
     </nav>
 </div>
@@ -61,7 +59,7 @@
 	What these methods do not have in common is how you describe getting from the origin to the desired location.  Because math and numbers are really useful, we would like a way to take a set of numbers (a vector) and have that describe a location in relationship to the origin.  Formally, the method for taking a set of numbers and turning it into a relative location is called a <b><i>coordinate system</i></b>.
   <br>
   <br>
-  <img src="images/moveFrom2D/report1_example1.png" width="820" height="279" alt="Example 1" style = "border:2px solid black; display:block; margin-left: auto; margin-right: auto;"/>
+  <img src="../images/moveFrom2D/report1_example1.png" width="820" height="279" alt="Example 1" style = "border:2px solid black; display:block; margin-left: auto; margin-right: auto;"/>
 	<br>
 
 	While there are many possible coordinate systems, we will focus solely on <i>Cartesian coordinate systems.</i> <sup>3</sup>
@@ -109,7 +107,7 @@
 
   <br>
   <br>
-  <img src="images/moveFrom2D/report1_example2.png" width="705" height="432" alt="Example 1" style = "border:2px solid black; display:block; margin-left: auto; margin-right: auto;"/>
+  <img src="../images/moveFrom2D/report1_example2.png" width="705" height="432" alt="Example 1" style = "border:2px solid black; display:block; margin-left: auto; margin-right: auto;"/>
 
   <br>
   <br>
@@ -121,7 +119,7 @@
 
   <br>
   <br>
-	<img src="images/moveFrom2D/givenRotationMatrix.png" width="243" height="85" alt="Example 1" style = "border:2px solid black; display:block; margin-left: auto; margin-right: auto;"/>
+	<img src="../images/moveFrom2D/givenRotationMatrix.png" width="243" height="85" alt="Example 1" style = "border:2px solid black; display:block; margin-left: auto; margin-right: auto;"/>
   <br>
 
 	This matrix enables the conversion of a vector between two coordinate frames with the same origin.  Consider Figure 3 that has three points ({x<sub>1</sub>,x<sub>2</sub>,x<sub>3</sub>}), all
@@ -130,13 +128,13 @@
   <br>
 
   <br>
-  <img src="images/moveFrom2D/report1_example3.png" width="964" height="418" alt="Example 1" style = "border:2px solid black; display:block; margin-left: auto; margin-right: auto;"/>
+  <img src="../images/moveFrom2D/report1_example3.png" width="964" height="418" alt="Example 1" style = "border:2px solid black; display:block; margin-left: auto; margin-right: auto;"/>
   <br>
 
 	expressed in the m coordinate system. Because θ = 30◦, then rotation matrix going from m to y (denoted C<sub>m</sub><sup>y</sup>) will be:
   <br>
   <br>
-  <img src="images/moveFrom2D/givenRotationMatrix2.png" width="195" height="108" alt="Example 1" style = "border:2px solid black; display:block; margin-left: auto; margin-right: auto;"/>
+  <img src="../images/moveFrom2D/givenRotationMatrix2.png" width="195" height="108" alt="Example 1" style = "border:2px solid black; display:block; margin-left: auto; margin-right: auto;"/>
 
 	<br>
 
@@ -144,11 +142,11 @@
   <br>
   <br>
   <div class="threeRotationMatrices">
-  <img src="images/moveFrom2D/givenRotationMatrix3.png" width="284" height="212" alt="Example 1" style = "border:2px solid black; display:inline;"/>
+  <img src="../images/moveFrom2D/givenRotationMatrix3.png" width="284" height="212" alt="Example 1" style = "border:2px solid black; display:inline;"/>
 
-  <img src="images/moveFrom2D/givenRotationMatrix4.png" width="284" height="212" alt="Example 1" style = "border:2px solid black; display:inline;"/>
+  <img src="../images/moveFrom2D/givenRotationMatrix4.png" width="284" height="212" alt="Example 1" style = "border:2px solid black; display:inline;"/>
 
-  <img src="images/moveFrom2D/givenRotationMatrix5.png" width="284" height="212" alt="Example 1" style = "border:2px solid black; display:inline;"/>
+  <img src="../images/moveFrom2D/givenRotationMatrix5.png" width="284" height="212" alt="Example 1" style = "border:2px solid black; display:inline;"/>
   <br>
   <br>
   </div>
@@ -259,17 +257,17 @@
 	Let's walk through an example.  In Figure 4, the point <b>x</b><sup>y</sup> is at (3,2), the m coordinate frame axes are rotated 45° from the y coordinate frame axes, and <b>m</b><sup>y</sup> is (1,2). Given this information, we can solve for <b>x</b><sup>m</sup>.
   <br>
   <br>
-  <img src="images/moveFrom2D/givenRotationMatrix6.png" width="364" height="337" alt="Example 1" style = "border:2px solid black; display:block; margin-left: auto; margin-right: auto;"/>
+  <img src="../images/moveFrom2D/givenRotationMatrix6.png" width="364" height="337" alt="Example 1" style = "border:2px solid black; display:block; margin-left: auto; margin-right: auto;"/>
   <br>
 
-  <img src="images/moveFrom2D/report1_example4.png" width="817" height="374" alt="Example 1" style = "border:2px solid black; display:block; margin-left: auto; margin-right: auto;"/>
+  <img src="../images/moveFrom2D/report1_example4.png" width="817" height="374" alt="Example 1" style = "border:2px solid black; display:block; margin-left: auto; margin-right: auto;"/>
   <br>
 
   Now, let's see if we can go backwards and recover the original vector as well.
 
   <br>
   <br>
-  <img src="images/moveFrom2D/givenRotationMatrix7.png" width="378" height="246" alt="Example 1" style = "border:2px solid black; display:block; margin-left: auto; margin-right: auto;"/>
+  <img src="../images/moveFrom2D/givenRotationMatrix7.png" width="378" height="246" alt="Example 1" style = "border:2px solid black; display:block; margin-left: auto; margin-right: auto;"/>
   <br>
 
 	This demonstrates the capability to move from any coordinate frame to another coordinate frame and back again without loss of information.
@@ -286,7 +284,7 @@
 
   <br>
   <br>
-  <img src="images/moveFrom2D/givenRotationMatrix8.png" width="130" height="90" alt="Example 1" style = "border:2px solid black; display:block; margin-left: auto; margin-right: auto;"/>
+  <img src="../images/moveFrom2D/givenRotationMatrix8.png" width="130" height="90" alt="Example 1" style = "border:2px solid black; display:block; margin-left: auto; margin-right: auto;"/>
   <br>
 
 	can be used to move the points to the new location.  Note that from the "aircraft's" point of view, the point will still be at (0,2), but in a coordinate frame that is observing the aircraft(object), the coordinates will have changed. This change of coordinates is shown in Figure 5 (b).  On the other hand, if the airplane is fixed but the frame that is observing the aircraft changes (once again by 30°) then the inverse of the prior Given's rotation is used to transform the points:

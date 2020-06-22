@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Coordinate Translations</title>
-  <link rel="stylesheet" href="css/referenceFrames_styleSheet.css">
-  <title>Document</title>
+  <link rel="stylesheet" href="../css/moving_From_2D.css">
+  <title>Moving From 2D</title>
 </head>
 
 <body>
@@ -15,7 +15,7 @@
 <div class="wrapper">
 
   <div class="antLogo">
-    <img src="images/ANTLogo.png" width="125" height="125" alt="ANT Center Logo" />
+    <img src="../images/ANTLogo.png" width="125" height="125" alt="ANT Center Logo" />
   </div>
 
     <header class = "header1">
@@ -23,9 +23,9 @@
     </header>
     <nav>
       <ul class = "navMenu">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="movingFrom2D.html">Moving from 2-D</a></li>
-        <li><a href="referenceFrames.html">2-d Reference Frames</a></li>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="reference_Frames.html">Reference Frames</a></li>
+        <li><a href="moving_From_2D.html">Moving From 2D</a></li>
       </ul>
     </nav>
 
@@ -49,7 +49,7 @@
     <p>Note that there are mappings that exist between any one of these representations and all the others. For the most part, however, we will not be describing the conversions in this set of papers. Instead, we want you to have an intuitive-enough understand of each representation that when you implement a specific conversion (as copied from Wikipedia or some other <i><b>reliable</b></i> source, you can double-check to make sure things are actually equivalent).</p>
 
     <br>
-    <img src="images/referenceFrames/report2_example1.png" width="787" height="365" alt="Example 1" style = "border:2px solid black; display:block; margin-left: auto; margin-right: auto;"/>
+    <img src="../images/referenceFrames/report2_example1.png" width="787" height="365" alt="Example 1" style = "border:2px solid black; display:block; margin-left: auto; margin-right: auto;"/>
     <br>
     <br>
     <hr/>
@@ -59,18 +59,18 @@
     <p>The mathematical representation of this rotation is very similar to what we had in 2-D, namely:
     <br>
     <br>
-    <img src="images/referenceFrames/matrix_example1.png" width="287" height="96" alt="Example 1" style = "border:2px solid black; display:block; margin-left: auto; margin-right: auto;"/>
+    <img src="../images/referenceFrames/matrix_example1.png" width="287" height="96" alt="Example 1" style = "border:2px solid black; display:block; margin-left: auto; margin-right: auto;"/>
 
   </span><br /> Note that this represents a "right"-handed rotation about the <span class="math inline"><em>z</em></span> axis.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> It is also denoted as <span class="math inline"><em>C</em><sub>3</sub></span> to show that we are rotating about the third axis.</p>
     <p>If, instead, we wanted to rotate about a different axis, we could follow a very similar pattern, namely:<br />
     <strong>Rotation about <span class="math inline"><em>x</em></span>:</strong>
     <br />
     <br>
-    <img src="images/referenceFrames/matrix_example2.png" width="284" height="95" alt="Example 1" style = "border:2px solid black; display:block; margin-left: auto; margin-right: auto;"/>
+    <img src="../images/referenceFrames/matrix_example2.png" width="284" height="95" alt="Example 1" style = "border:2px solid black; display:block; margin-left: auto; margin-right: auto;"/>
     <br>
     <strong>Rotation about <span class="math inline"><em>y</em></span>:</strong> <br />
     <br>
-    <img src="images/referenceFrames/matrix_example3.png" width="289" height="97" alt="Example 1" style = "border:2px solid black; display:block; margin-left: auto; margin-right: auto;"/>
+    <img src="../images/referenceFrames/matrix_example3.png" width="289" height="97" alt="Example 1" style = "border:2px solid black; display:block; margin-left: auto; margin-right: auto;"/>
     <br>
     <p>There is a pattern to these matrices that is worth discussing.  First, the axis which is being rotated about has a column and row with two 0s and one 1.  So, equations <b>(2)</b>, <b>(3)</b>, and <b>(1)</b> represent (right-handed) rotations around the <b>x</b>, <b>y</b>, and <b>z</b> axes, respectively.  Second, because these are right-handed rotations, the row right after the axis being rotated over has the positive sin θ term, and the line after that has the negative term.  For Equations <b>(2)</b> and <b>(1)</b> this is easy to see.  For Equation <b>(3)</b>, note that the 3rd row comes after the <b>y</b> row, and it has a positive sin θ term, while the first row (following the third row) has the − sin θ  value.</p>
     <p>Tying back into chapter one, note that all of these rotations are assumed to be <em>reference frame</em> rotations and not object rotations. If they were object rotations, the rows following the axis being rotated around would have - sin values.</p>
@@ -112,7 +112,7 @@
     <p>While so far we have implemented 2-D rotations, but in a 3-D coordinate system, what we would really like to do is create a full 3-D rotations. Luckily, any 3-D rotation can be decomposed into a set of three 2-D rotations in sequence. So, for example, we could first rotate about the <span class="math inline"><em>z</em></span> axis, followed by a rotation about the <span class="math inline"><em>y</em></span> axis, and then the <span class="math inline"><em>x</em></span> axis. The full rotation would be: <br /><span class="math display"><em>C</em><sub>1</sub><em>C</em><sub>2</sub><em>C</em><sub>3</sub></span><br /> and is termed a 3-2-1 rotation because we rotate about the 3rd axis first. Note, however, that in the equation the rotations matrices are ordered 1,2,3. This is because when there is a position (a vector), it will be on the right of the matrices, so the multiplication essentially goes from right to left (3-2-1). Just remember that the math expressed things from right to left (imagine the vector running through the matrices; the vector starts on the right), while we describe it in written format from left-to-right.</p>
     <p>This notation actually introduces 12(!) different ways we can express a 3-D rotation. Any 3-D rotation can be expressed as a sequence of three axis rotations. If two rotations in a row use the same axis, they are redundant, so we have all rotations i-j-k, where i,j,k are either 1,2, or 3 and both i <span>&#8800;</span> j and j <span>&#8800;</span> k. More precisely, the following ordered sets of rotations about an axis are all valid representations of a rotation in 3-D:</p>
 
-    <img src="images/referenceFrames/table_image.png" width="292" height="79" alt="Example 1" style = "border:2px solid black; display:block; margin-left: auto; margin-right: auto;"/>
+    <img src="../images/referenceFrames/table_image.png" width="292" height="79" alt="Example 1" style = "border:2px solid black; display:block; margin-left: auto; margin-right: auto;"/>
 
 
     <p>A few comments are in order on these rotations:</p>
@@ -124,7 +124,7 @@
     <p>First, let's discuss why different orderings lead to different representations of the same rotation. Consider <b>Figure 2 (a-c)</b> which shows just two rotations in a row (3-2), the rotation around axis 3 being 30 degrees and the rotation around axis 2 being 40 degrees. Then in <b>Figure 2</b>, the same two axis rotations are applied, but in the opposite order (axis 2 by 40 degrees, axis 3 by 30 degrees). Note that the after rotation around axis 2 by 40 degrees, axis 3 is in a different location (figure(d)) then it is in figure(a). This means that the same rotation by 30 degrees around axis 3 leads to very different rotations in the world. This is the reason why the ordering of the axes is critical. Therefore, a (3-2-1) rotation will be very different from a (1-2-3) rotation, even if the angles applied to each axis are the same in both rotations.</p>
 
     <br>
-    <img src="images/referenceFrames/report2_example2.png" width="789" height="355" alt="Example 2" style = "border:2px solid black; display:block; margin-left: auto; margin-right: auto;"/>
+    <img src="../images/referenceFrames/report2_example2.png" width="789" height="355" alt="Example 2" style = "border:2px solid black; display:block; margin-left: auto; margin-right: auto;"/>
     <br>
     <br>
     <hr/>
