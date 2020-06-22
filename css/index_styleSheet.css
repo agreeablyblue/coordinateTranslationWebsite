@@ -81,5 +81,13 @@ header h2{
 header h3{
   color: black;
   font-weight: 1000;
-  font-size: 30px;
+  font-size: 20px;
+}
+
+.authorP{
+  font-size: 14px;
+}
+
+.designerP{
+font-size: 14px;
 }
