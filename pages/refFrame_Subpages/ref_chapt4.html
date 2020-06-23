@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Coordinate Translations</title>
+  <link rel="stylesheet" href="../../css/reference_Frames.css">
+  <title>Reference Frames</title>
+</head>
+
+<body>
+
+  <div class="wrapper">
+
+    <div class="antLogo">
+      <img src="../../../../images/ANTLogo.png" width="125" height="125" alt="ANT Center Logo" />
+    </div>
+
+    <header class="header1">
+      <h1>Coordinate <span class="translations">Translations</span></h1>
+    </header>
+
+
+    <nav>
+      <ul class="navMenu">
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../reference_Frames.html">Reference Frames</a></li>
+        <li><a href="../moving_From_2D.html">Moving From 2D</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <button onclick="topFunction()" id="myBtn" title="Return to Top">&#8593;</button>
+
+  <div class="contentWrapper">
+
+    <p><a name="toc.4">
+        <h1>4&nbsp;Frame vs. Object Rotations</h1>
+        When discussing rotations, it is very important to realize there are two types of rotations: Object rotations and Coordinate frame rotations. So far, we have discussed frame rotations only. However, if you read about rotations or see them
+        explained other places, it is often not clear what is being rotated, the object or the coordinate frame.
+
+        Consider the object shown in Figure 5 (a). This airplane-like object has a point on its nose that is at location (0,2), with the axes defined as shown in the figure. If the airplane itself rotates (an object rotation) by 30° then a Given's
+        rotation matrix of:
+
+        <br>
+        <br>
+        <img src="../../images/moveFrom2D/givenRotationMatrix8.png" width="130" height="90" alt="Example 1" style="border:2px solid black; display:block; margin-left: auto; margin-right: auto;" />
+        <br>
+
+        can be used to move the points to the new location. Note that from the "aircraft's" point of view, the point will still be at (0,2), but in a coordinate frame that is observing the aircraft(object), the coordinates will have changed. This
+        change of coordinates is shown in Figure 5 (b). On the other hand, if the airplane is fixed but the frame that is observing the aircraft changes (once again by 30°) then the inverse of the prior Given's rotation is used to transform the
+        points:
+
+        Whenever a rotation is being applied, it needs to be clear what the rotation is being applied for. This gets even more confusing because, most of the time, a coordinate frame rotation corresponds with an object (a sensor, platform, etc.)
+        physically rotating. For example, if the aircraft is observing something not attached to the airplane, an airplane rotation of 30 degrees corresponds to a <i>coordinate frame</i> rotation. For the purposes of our explanation of rotations, we
+        will assume all rotations are <i>coordinate frame</i> rotations. In other words, we assume everything in the world is fixed, but the sensor observing the word is what is rotating.
+
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <a href="ref_chapt3.html" class="previous">&larr; Previous</a>
+        <a href="../moving_From_2D.html" class="next">Next Paper&rarr;</a>
+        <br>
+        <br>
+        <hr>
+  </div>
+
+  <script src="../../scripts/buttonScript.js"></script>
+</body>
+
+</html>

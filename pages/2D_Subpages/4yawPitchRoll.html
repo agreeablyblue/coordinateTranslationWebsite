@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Coordinate Translations</title>
+  <link rel="stylesheet" href="../../css/moving_From_2D.css">
+  <title>Moving From 2D</title>
+</head>
+
+<body>
+
+
+  <div class="wrapper">
+
+    <div class="antLogo">
+      <img src="../../images/ANTLogo.png" width="125" height="125" alt="ANT Center Logo" />
+    </div>
+
+    <header class="header1">
+      <h1>Coordinate <span class="translations">Translations</span></h1>
+    </header>
+    <nav>
+      <ul class="navMenu">
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../reference_Frames.html">Reference Frames</a></li>
+        <li><a href="../moving_From_2D.html">Moving From 2D</a></li>
+      </ul>
+    </nav>
+
+
+  </div>
+
+  <button onclick="topFunction()" id="myBtn" title="Return to Top">&#8593;</button>
+
+  <div class="contentWrapper">
+
+    <h1 id="yaw-pitch-roll-ypr">Yaw-Pitch-Roll (YPR)</h1>
+    <p>Obviously, having 12 different possible rotations orders, where the same set of 3 numbers can mean one of 12 different things, does not lead to conciseness and clarity. There is one set of rotations, closely related to Euler angles, that has a
+      basis is the real world and is often used. This is to define all rotations in terms of three angles: yaw, pitch, and roll. These angles have physical meanings, which I find most easily explained in terms of a fixed-wing airplane. A (0,0,0)
+      rotation is when the airplane is perfectly flat and headed straight North. Rotations from that position are as follows:</p>
+    <ul>
+      <li>
+        <p>Yaw. This angle represents what "direction" the aircraft is pointed if projected onto a 2-D map. North is 0 degrees, and positive angles move from North to East. So, 0 degree=North, 45 = NOrthEast, 90 = East, 180 = South, and -90 degrees
+          is west. (For those aeronautical types out there, this is the direction the plane is physically pointing, not actually moving if there is a cross-wind or other disturbances.)</p>
+      </li>
+      <li>
+        <p>Pitch. This is the angle of the airplane nose <em>above</em> the horizontal plane in which Yaw is defined. So, 0 degrees means an aircraft is perfectly level, 10 degrees means it is pointed up by 10 degrees, while -20 means the aircraft is
+          pointed down.</p>
+      </li>
+      <li>
+        <p>Roll. After yaw and pitch, the roll angle tells how far below the horizontal plane the right wing is. So, 10 degrees of roll would mean that the plane is "banked" to the right (and usually will turn right). Negative roll angles means the
+          aircraft is banked to the left.</p>
+      </li>
+    </ul>
+
+    <br>
+    <hr />
+
+    <h2 id="relationship-between-ypr-and-euler-angles">Relationship between YPR and Euler Angles</h2>
+    <p>Note that Yaw, Pitch, and Roll are very similar to Euler angles. In fact, if your coordinate system is defined as North (x), East(y), and Down(z) axes, then yaw is a right-handed rotation about the 3rd (z) axis, pitch about the y axis, and
+      roll about the x axis, making YPR and 3-2-1 rotation around the North-East-Down (NED) axes. While this is very convenient, not all people like the NED axes, particularly because the to go up, the <span class="math inline"><em>z</em></span>
+      numbers have to go down, which can be counter-intuitive. So, some people like east-north-up (ENU), or north-west-up (NWU). In both these cases, there is now not a simple mapping to</p>
+
+
+    <br>
+    <br>
+    <a href="3fullRotation.html" class="previous">&larr; Previous</a>
+    <br>
+    <br>
+    <br>
+    <hr />
+
+
+
+
+
+  </div>
+
+
+
+</body>
+
+</html>

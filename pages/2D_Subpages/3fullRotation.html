@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Coordinate Translations</title>
+  <link rel="stylesheet" href="../../css/moving_From_2D.css">
+  <title>Moving From 2D</title>
+</head>
+
+<body>
+
+
+  <div class="wrapper">
+
+    <div class="antLogo">
+      <img src="../../images/ANTLogo.png" width="125" height="125" alt="ANT Center Logo" />
+    </div>
+
+    <header class="header1">
+      <h1>Coordinate <span class="translations">Translations</span></h1>
+    </header>
+    <nav>
+      <ul class="navMenu">
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../reference_Frames.html">Reference Frames</a></li>
+        <li><a href="../moving_From_2D.html">Moving From 2D</a></li>
+      </ul>
+    </nav>
+
+
+  </div>
+
+  <button onclick="topFunction()" id="myBtn" title="Return to Top">&#8593;</button>
+
+  <div class="contentWrapper">
+
+    <h2 id="creating-a-full-rotation-in-3-d">Creating a full rotation in 3-D</h2>
+    <p>While so far we have implemented 2-D rotations, but in a 3-D coordinate system, what we would really like to do is create a full 3-D rotations. Luckily, any 3-D rotation can be decomposed into a set of three 2-D rotations in sequence. So, for
+      example, we could first rotate about the <span class="math inline"><em>z</em></span> axis, followed by a rotation about the <span class="math inline"><em>y</em></span> axis, and then the <span class="math inline"><em>x</em></span> axis. The
+      full rotation would be: <br /><span class="math display"><em>C</em><sub>1</sub><em>C</em><sub>2</sub><em>C</em><sub>3</sub></span><br /> and is termed a 3-2-1 rotation because we rotate about the 3rd axis first. Note, however, that in the
+      equation the rotations matrices are ordered 1,2,3. This is because when there is a position (a vector), it will be on the right of the matrices, so the multiplication essentially goes from right to left (3-2-1). Just remember that the math
+      expressed things from right to left (imagine the vector running through the matrices; the vector starts on the right), while we describe it in written format from left-to-right.</p>
+    <p>This notation actually introduces 12(!) different ways we can express a 3-D rotation. Any 3-D rotation can be expressed as a sequence of three axis rotations. If two rotations in a row use the same axis, they are redundant, so we have all
+      rotations i-j-k, where i,j,k are either 1,2, or 3 and both i <span>&#8800;</span> j and j <span>&#8800;</span> k. More precisely, the following ordered sets of rotations about an axis are all valid representations of a rotation in 3-D:</p>
+
+    <img src="../../images/referenceFrames/table_image.png" width="292" height="79" alt="Example 1" style="border:2px solid black; display:block; margin-left: auto; margin-right: auto;" />
+
+
+    <p>A few comments are in order on these rotations:</p>
+    <ol>
+      <li>
+        <p><em><b>THE ORDER IN WHICH THE OPERATIONS OCCURS MATTERS!</em></b> Sorry for shouting, but it is a very important point and can catch up even experienced rotation experts on occasion. With the exact same angles around the three axes, a
+          1-2-3 rotation will be very different from a 3-2-1 rotation. So, a 1-2-3 rotation of 30, 40, and 25 degrees is <em>not</em> the same as a 3-2-1 rotation of 25, 40, and 30 degrees.</p>
+      </li>
+      <li>
+        <p>The shaded rotations on the left are interesting because they repeat one of the axes. The ones on the right differ <b>only</b> in their ordering of the 3 unique axes.</p>
+      </li>
+      <li>
+        <p>While the representation may be very different, they all represent the same physical phenomenon, a rotation in 3-D space. So, for example, a 1-2-3 rotation of 30, 40, and 25 degrees.</p>
+      </li>
+    </ol>
+    <p>First, let's discuss why different orderings lead to different representations of the same rotation. Consider <b>Figure 2 (a-c)</b> which shows just two rotations in a row (3-2), the rotation around axis 3 being 30 degrees and the rotation
+      around axis 2 being 40 degrees. Then in <b>Figure 2</b>, the same two axis rotations are applied, but in the opposite order (axis 2 by 40 degrees, axis 3 by 30 degrees). Note that the after rotation around axis 2 by 40 degrees, axis 3 is in a
+      different location (figure(d)) then it is in figure(a). This means that the same rotation by 30 degrees around axis 3 leads to very different rotations in the world. This is the reason why the ordering of the axes is critical. Therefore, a
+      (3-2-1) rotation will be very different from a (1-2-3) rotation, even if the angles applied to each axis are the same in both rotations.</p>
+
+    <br>
+    <img src="../../images/referenceFrames/report2_example2.png" width="789" height="355" alt="Example 2" style="border:2px solid black; display:block; margin-left: auto; margin-right: auto;" />
+    <br>
+    <br>
+    <br>
+    <br>
+    <a href="2otherProperties.html" class="previous">&larr; Previous</a>
+    <a href="4yawPitchRoll.html" class="next">Next &rarr;</a>
+    <br>
+    <br>
+    <hr/>
+  </div>
+
+
+
+</body>
+
+</html>

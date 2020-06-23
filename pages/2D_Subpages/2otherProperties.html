@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Coordinate Translations</title>
+  <link rel="stylesheet" href="../../css/moving_From_2D.css">
+  <title>Moving From 2D</title>
+</head>
+
+<body>
+
+
+  <div class="wrapper">
+
+    <div class="antLogo">
+      <img src="../../images/ANTLogo.png" width="125" height="125" alt="ANT Center Logo" />
+    </div>
+
+    <header class="header1">
+      <h1>Coordinate <span class="translations">Translations</span></h1>
+    </header>
+    <nav>
+      <ul class="navMenu">
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../reference_Frames.html">Reference Frames</a></li>
+        <li><a href="../moving_From_2D.html">Moving From 2D</a></li>
+      </ul>
+    </nav>
+
+
+  </div>
+
+  <button onclick="topFunction()" id="myBtn" title="Return to Top">&#8593;</button>
+
+  <div class="contentWrapper">
+
+    <h2 id="other-properties-of-3-d-axes.">Other properties of 3-D axes.</h2>
+    <p>So far, we have talked about "adding" another axis to move from 2-D to 3-D. This new axis has to meet some requirements though. First, it has to be unit length and orthogonal to the first two axes. This leads us with two choices, leading us to
+      the second constraint. Second, the axes must form a "right-handed" set of axes<sup><b>1</b></sup>. Mathematically, this is defined as putting the three axes in a matrix and making sure the matrix has a determinate of +1 (<em>not</em> -1).
+      Conceptually, it is called a right-handed coordinate system because if you cross-product the x and y axes together, you can use your right hand to determine the direction of the z-axis. If you start with your fingers pointing in the direction
+      of the x axis and orient your hand such that your fingers curl towards the y axis, your thumb will be pointing in the direction of the z axis.</p>
+    <p>So, consider <b>Figure 1 (a)</b>. This is a right-handed coordinate system because <b>e<sub>1</sub></b> x <b>e<sub>2</sub></b>, where <b>x</b> represents the cross product, leads to the 3rd axis coming out of the page towards you. If instead
+      it went "into" the page, then it would be a left-handed coordinate system.</p>
+    <p>Note that a right-handed coordinate system has the following three properties:</p>
+    <ol>
+      <li> <b>e<sub>1</sub></b> x <b>e<sub>2</sub></b> = <b>e<sub>3</sub></b> </li>
+      <li> <b>e<sub>2</sub></b> x <b>e<sub>3</sub></b> = <b>e<sub>1</sub></b> </li>
+      <li> <b>e<sub>3</sub></b> x <b>e<sub>1</sub></b> = <b>e<sub>2</sub></b> </li>
+    </ol>
+    <p>If one is satisfied, all three properties are satisfied, but it is worth knowing that any two vectors imposes a directionality constraint on the other vectors.</p>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <a href="1eulerRotations.html" class="previous">&larr; Previous</a>
+    <a href="3fullRotation.html" class="next">Next &rarr;</a>
+
+    <br>
+    <br>
+    <section class="footnotes" role="doc-endnotes">
+      <hr />
+      <ol>
+        <li id="fn2" role="doc-endnote">
+          <p>We will discuss in more detail why this constraint is important when we get to DCM-based representations of rotation</p>
+        </li>
+      </ol>
+    </section>
+
+
+
+
+  </div>
+
+
+
+</body>
+
+</html>
