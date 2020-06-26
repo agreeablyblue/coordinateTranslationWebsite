@@ -81,6 +81,15 @@
         <br>
         <div class="container" id="container"></div>
 
+
+        <div class="objectRotation">
+            <div class="yAngle" id="yAngle"></div>
+        </div>
+
+        <button type="button" class="btn" id="btn">Rotate Grid</button>
+
+        <button type="button" class="btnReset" id="btnReset">Reset</button>
+
         <br>
         <br>
         <br>
@@ -102,30 +111,6 @@
 	<script src="../../js/OrbitControls.js"></script>
 	<script src="../../js/TransformControls.js"></script>
 	<!-- End ThreeJS Call -->
-
-  <div class="objectBlueBar"></div>
-		<div class="objectRotation">
-				<br>
-				<!--Displays Angle of Object Rotation. Output comes form the animate function in render_object.js -->
-				<div class="yAngle" id="yAngle"></div>
-				<!--End of angle displaying divs-->
-				<br>
-		</div>
-		<!-- End Object Rotation Holder -->
-
-		<!--Camera Rotation Holder-->
-
-		<!--End Camera Rotation Holder-->
-
-		<!-- Camera Movement Button -->
-		<div class="buttonEffect"></div>
-		<button type="button" class="btn" id="btn">Rotate Grid</button>
-		<!-- End Camera Movement Button -->
-
-		<!-- Scene Reset Button -->
-		<div class="resetEffect"></div>
-		<button type="button" class="btnReset" id="btnReset">Reset</button>
-		<!-- End Scene Reset Button -->
 
 	<!-- Script Call For Developer Defined ThreeJS Scene Render -->
 	<script src="../../scripts/render_object.js"></script>

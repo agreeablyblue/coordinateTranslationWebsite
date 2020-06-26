@@ -11,24 +11,23 @@ gridPointHelper = grid lines added to the scene
 var s = new THREE.Scene();
 var c = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 10000 );
 
-var containerA = document.getElementById('containerA');
-document.body.appendChild(containerA);
+var container = document.getElementById('container');
 
-r = new THREE.WebGLRenderer();
-r.setSize(window.innerWidth, window.innerHeight);
-containerA.appendChild(r.domElement);
+renderer = new THREE.WebGLRenderer();
+renderer.setSize(window.innerWidth * 0.55, window.innerHeight * 0.55);
+container.appendChild(renderer.domElement);
 
-r.setClearColor("#efefef");
+renderer.setClearColor("#efefef");
 
 var render = function( )
 {
-  r.render ( s, c );
+  renderer.render ( s, c );
 };
 
 window.addEventListener('resize', function() {
-  var width = window.innerWidth ;
-  var height = window.innerHeight;
-  r.setSize(width, height);
+  var width = window.innerWidth * 0.55 ;
+  var height = window.innerHeight * 0.55;
+  renderer.setSize(width, height);
   c.aspect = width / height;
   c.updateProjectionMatrix();
 });

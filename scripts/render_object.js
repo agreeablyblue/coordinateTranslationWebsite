@@ -8,15 +8,15 @@ var camera = new THREE.PerspectiveCamera(75, (window.innerWidth / window.innerHe
 var container = document.getElementById('container');
 
 renderer = new THREE.WebGLRenderer();
-renderer.setSize(container.innerWidth * 0.5, container.innerHeight * 0.5);
+renderer.setSize(window.innerWidth * 0.55, window.innerHeight * 0.55);
 container.appendChild(renderer.domElement);
 
 renderer.setClearColor("#efefef");
 
 //Scalable window resizing
 window.addEventListener('resize', function() {
-  var width = window.innerWidth * 0.5;
-  var height = window.innerHeight * 0.5;
+  var width = window.innerWidth * 0.55;
+  var height = window.innerHeight * 0.55;
   renderer.setSize(width, height);
   camera.aspect = width / height;
   camera.updateProjectionMatrix();
@@ -239,7 +239,7 @@ var animate = function() {
   requestAnimationFrame(animate);
 
   //Get Object Y Rotation Angle
-  
+
   var angleOfY = defaultRotation.angleTo(mesh.quaternion);
   var y = THREE.Math.radToDeg(angleOfY).toFixed(2);
 

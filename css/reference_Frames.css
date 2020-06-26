@@ -180,86 +180,21 @@ header h3{
   padding: 8px 16px;
 }
 
-.objectBlueBar{
-  position: absolute;
-  left: 77.5vw;
-  top: 35vh;
-  color:#6699CC;
-  z-index: 5;
-  height: 5%;
-  width: 0.5%;
-  float: right;
-  background-color: #6699CC;
-  opacity:1;
-
-}
-
 .objectRotation {
-  position: absolute;
-  left: 78vw;
-  top: 35vh;
+
   color:white;
-  z-index: 5;
-  height: 5%;
-  width: 20%;
-  float: right;
+  width: 25%;
   background-color: #000000;
   opacity:0.70;
+  display: inline-block;
   padding-left: .9vw;
   text-align: left;
   font-size: 1.9vh;
   font-family: 'Ubuntu', sans-serif;
-}
-
-.cameraRotation{
-  position: absolute;
-  left: 78vw;
-  top: 25vh;
-  color:white;
-  z-index: 5;
-  height: 5%;
-  width: 20%;
-  float: right;
-  background-color: #000000;
-  opacity:0.70;
-  padding-left: .9vw;
-  text-align: left;
-  font-size: 1.9vh;
-  font-family: 'Ubuntu', sans-serif;
-}
-
-.cameraBlueBar{
-  position: absolute;
-  left: 77.5vw;
-  top: 25vh;
-  color:#6699CC;
-  z-index: 5;
-  height: 5%;
-  width: 0.5%;
-  float: right;
-  background-color: #6699CC;
-  opacity:1;
-}
-.buttonEffect{
-  position: absolute;
-  left: 77.5vw;
-  top: 14vh;
-  color:#6699CC;
-  z-index: 5;
-  height: 5%;
-  width: 0.5%;
-  float: right;
-  background-color: #6699CC;
-  opacity:1;
 }
 
 .btn{
-  width: 6%;
-  height: 5%;
-  position: absolute;
-  z-index: 5;
-  left: 78vw;
-  top: 14vh;
+  width:15%;
   opacity: 0.70;
   color: white;
   background-color: black;
@@ -274,25 +209,9 @@ header h3{
   background-color: #6699CC;
 }
 
-.resetEffect{
-  position: absolute;
-  left: 84.5vw;
-  top: 14vh;
-  color:#6699CC;
-  z-index: 5;
-  height: 5%;
-  width: 0.5%;
-  float: right;
-  background-color: #6699CC;
-  opacity:1;
-}
 .btnReset{
-  width: 6%;
-  height: 5%;
-  position: absolute;
-  z-index: 5;
-  left: 85vw;
-  top: 14vh;
+  display: inline-block;
+  width: 15%;
   opacity: 0.70;
   color: white;
   background-color: black;
@@ -308,7 +227,7 @@ header h3{
 }
 
 .container{
-  
+
 
 
 }
