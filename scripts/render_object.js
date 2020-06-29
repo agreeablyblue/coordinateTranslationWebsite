@@ -209,12 +209,12 @@ if (moveButton) {
     switch (moveCase) {
       case 1:
         transform.attach(group);
-        moveButton.innerHTML = "Rotate Grid";
+        moveButton.innerHTML = "Rotate Plane";
         moveCase = 2;
         break;
       case 2:
         transform.attach(mesh);
-        moveButton.innerHTML = "Rotate Plane";
+        moveButton.innerHTML = "Rotate Grid";
         moveCase = 1;
         break;
     }

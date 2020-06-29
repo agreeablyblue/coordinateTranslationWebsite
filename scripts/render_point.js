@@ -1,15 +1,6 @@
-/*
-Variable Key:
-s = scene being rendered
-c = camera viewing the scene
-containerA = div contained defined in index.html which the rendered scene is appended to
-sphere = rendered sphere
-gridPointHelper = grid lines added to the scene
+var scene = new THREE.Scene();
 
-*/
-
-var s = new THREE.Scene();
-var c = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 10000 );
+var camera = new THREE.PerspectiveCamera(75, (window.innerWidth / window.innerHeight), 0.1, 10000);
 
 var container = document.getElementById('container');
 
@@ -19,58 +10,221 @@ container.appendChild(renderer.domElement);
 
 renderer.setClearColor("#efefef");
 
-var render = function( )
-{
-  renderer.render ( s, c );
-};
-
+//Scalable window resizing
 window.addEventListener('resize', function() {
-  var width = window.innerWidth * 0.55 ;
+  var width = window.innerWidth * 0.55;
   var height = window.innerHeight * 0.55;
   renderer.setSize(width, height);
-  c.aspect = width / height;
-  c.updateProjectionMatrix();
+  camera.aspect = width / height;
+  camera.updateProjectionMatrix();
 });
 
-//Transform Controls
-var transform = new THREE.TransformControls(c, renderer.domElement);
+//Orbit control implmentation
+
+//TransformControls
+var transform = new THREE.TransformControls(camera, renderer.domElement);
 transform.setRotationSnap(THREE.Math.degToRad(0.25));
 transform.axis = 'Y';
 transform.showX = false;
 transform.showZ = false;
-
-var geometry = new THREE.SphereGeometry( 5, 32, 32 );
-var material = new THREE.MeshBasicMaterial( { color: 0xFF0000, wireframe: false } );
-var sphere = new THREE.Mesh( geometry, material );
-s.add( sphere );
+//Mesh to hold the rendered airplane
 
 
+//MTLLoader
 
-sphere.position.y = 0;
-sphere.position.z = -195;
-sphere.position.x = 13;
-
-c.rotation.order = "YXZ";
-c.position.x = 0;
-c.position.y = 550;
-c.lookAt(0,0,0);
+  //OBJ Creator
+  var geometry = new THREE.SphereGeometry( 25, 25, 25 );
+  var material = new THREE.MeshBasicMaterial( { color: 0xFF0000, wireframe: false } );
+  var mesh = new THREE.Mesh( geometry, material );
 
 
-var size = 650;
+  mesh.position.z = -325;
+  scene.add(mesh);
+
+  //transform.attach(mesh);
+  scene.add(transform);
+  transform.setMode("rotate");
+
+
+//Skybox
+var materialArray = [];
+var tex_ft = new THREE.TextureLoader().load('../../assets/skybox/clouds1_front.png');
+var tex_bk = new THREE.TextureLoader().load('../../assets/skybox/clouds1_back.png');
+var tex_up = new THREE.TextureLoader().load('../../assets/skybox/clouds1_up.png');
+var tex_dn = new THREE.TextureLoader().load('../../assets/skybox/clouds1_down.png');
+var tex_rt = new THREE.TextureLoader().load('../../assets/skybox/clouds1_right.png');
+var tex_lf = new THREE.TextureLoader().load('../../assets/skybox/clouds1_left.png');
+
+
+
+materialArray.push(new THREE.MeshBasicMaterial({
+  map: tex_ft
+}));
+materialArray.push(new THREE.MeshBasicMaterial({
+  map: tex_bk
+}));
+materialArray.push(new THREE.MeshBasicMaterial({
+  map: tex_up
+}));
+materialArray.push(new THREE.MeshBasicMaterial({
+  map: tex_dn
+}));
+materialArray.push(new THREE.MeshBasicMaterial({
+  map: tex_rt
+}));
+materialArray.push(new THREE.MeshBasicMaterial({
+  map: tex_lf
+}));
+
+for (var i = 0; i < 6; i++)
+  materialArray[i].side = THREE.BackSide;
+
+
+var skyboxGeo = new THREE.BoxGeometry(10000, 10000, 10000);
+var skybox = new THREE.Mesh(skyboxGeo, materialArray);
+scene.add(skybox);
+
+
+var group = new THREE.Group();
+//Grid Helper creator
+var size = 850;
 var divisions = 25;
-var gridPointHelper = new THREE.GridHelper(size, divisions);
-s.add(gridPointHelper);
+var gridHelper = new THREE.GridHelper(size, divisions);
 
-transform.attach( gridPointHelper );
-s.add( transform );
-transform.setMode("rotate");
+var geometry = new THREE.BoxGeometry (60, 1, 60);
 
-var GameLoop = function ( )
-{
-  requestAnimationFrame( GameLoop );
+var cube0Materials = [
+  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/0.png'), side: THREE.DoubleSide, transparent: true } ),
+  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/0.png'), side: THREE.DoubleSide, transparent: true } ),
+  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/0.png'), side: THREE.DoubleSide, transparent: true } ),
+  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/0.png'), side: THREE.DoubleSide, transparent: true } ),
+  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/0.png'), side: THREE.DoubleSide, transparent: true } ),
+  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/0.png'), side: THREE.DoubleSide, transparent: true } ),
+];
 
-  render( );
+var cube90Materials = [
+  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/90.png'), side: THREE.DoubleSide, transparent: true } ),
+  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/90.png'), side: THREE.DoubleSide, transparent: true } ),
+  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/90.png'), side: THREE.DoubleSide, transparent: true } ),
+  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/90.png'), side: THREE.DoubleSide, transparent: true } ),
+  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/90.png'), side: THREE.DoubleSide, transparent: true } ),
+  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/90.png'), side: THREE.DoubleSide, transparent: true } ),
+];
 
+var cube180Materials = [
+  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/180.png'), side: THREE.DoubleSide, transparent: true } ),
+  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/180.png'), side: THREE.DoubleSide, transparent: true } ),
+  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/180.png'), side: THREE.DoubleSide, transparent: true } ),
+  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/180.png'), side: THREE.DoubleSide, transparent: true } ),
+  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/180.png'), side: THREE.DoubleSide, transparent: true } ),
+  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/180.png'), side: THREE.DoubleSide, transparent: true } ),
+];
+
+var cubeNegative90Materials = [
+  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/-90.png'), side: THREE.DoubleSide, transparent: true } ),
+  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/-90.png'), side: THREE.DoubleSide, transparent: true } ),
+  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/-90.png'), side: THREE.DoubleSide, transparent: true } ),
+  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/-90.png'), side: THREE.DoubleSide, transparent: true } ),
+  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/-90.png'), side: THREE.DoubleSide, transparent: true } ),
+  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/-90.png'), side: THREE.DoubleSide, transparent: true } ),
+];
+
+
+
+var material0 = new THREE.MeshFaceMaterial(cube0Materials);
+var cube0 = new THREE.Mesh( geometry, material0 );
+
+var material90 = new THREE.MeshFaceMaterial(cube90Materials);
+var cube90 = new THREE.Mesh( geometry, material90 );
+
+var material180 = new THREE.MeshFaceMaterial(cube180Materials);
+var cube180 = new THREE.Mesh( geometry, material180 );
+
+var materialNegative90 = new THREE.MeshFaceMaterial(cubeNegative90Materials);
+var cubeNegative90 = new THREE.Mesh( geometry, materialNegative90 );
+
+group.add(cube0);
+group.add(cube90);
+group.add(cube180);
+group.add(cubeNegative90);
+
+cube0.position.x = 405;
+cube0.position.z = 0;
+
+cube90.position.x = 0;
+cube90.position.z = -405;
+
+cube180.position.x = -405;
+cube180.position.z = 0;
+
+cubeNegative90.position.x = 0;
+cubeNegative90.position.z = 405;
+
+group.add(gridHelper);
+scene.add(group);
+
+
+
+
+//Focuses the camera on the rendered object
+camera.position.y = 650;
+camera.lookAt(0, 0, 0);
+camera.rotation.y = 90 * Math.PI / 180;
+camera.rotation.order = "YXZ";
+
+
+
+//Ambient light generator
+var pointLight = new THREE.PointLight(0xFFFFFF, 20, 1000);
+pointLight.position.set(0, 500, 0);
+scene.add(pointLight);
+
+//Function to implement orbit OrbitControls
+var orbit = new THREE.OrbitControls(camera, renderer.domElement);
+
+orbit.enabled = false;
+
+
+//Pointer to the camera movement button
+
+//Switch case statement variable
+transform.attach(group);
+
+
+
+//Pointer to the scene reset button
+var resetButton = document.getElementById('btnReset');
+
+if(resetButton){
+  resetButton.addEventListener("click", function(){
+    location.reload();
+
+  });
+}
+
+//Function animate which calls the renderer to render the scene
+var defaultRotation = new THREE.Quaternion();
+var defaultCameraRotation = new THREE.Quaternion();
+
+var animate = function() {
+  requestAnimationFrame(animate);
+
+  //Get Object Y Rotation Angle
+
+  var angleOfY = defaultRotation.angleTo(mesh.quaternion);
+  var y = THREE.Math.radToDeg(angleOfY).toFixed(2);
+
+  //Check if rotation is positive or negative
+  var yValue = mesh.rotation.y;
+  //If negative then multiply by -1 to reflect that in the output
+  if (yValue < 0) {
+    y = y * -1;
+  }
+
+
+
+
+  renderer.render(scene, camera);
 };
 
-GameLoop( );
+animate();
