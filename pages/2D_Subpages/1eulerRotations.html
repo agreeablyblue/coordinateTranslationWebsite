@@ -5,55 +5,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Coordinate Translations</title>
   <link rel="stylesheet" href="../../css/moving_From_2D.css">
   <title>Moving From 2D</title>
 </head>
 
 <body>
 
-
-  <div class="wrapper">
-
-    <div class="antLogo">
-      <img src="../../images/ANTLogo.png" width="125" height="125" alt="ANT Center Logo" />
-    </div>
-
-    <header class="header1">
-      <h1></h1>
-    </header>
-    <nav>
-      <ul class="navMenu">
-        <li><a href="../../index.html">Home</a></li>
-        <li><a href="../reference_Frames.html">Reference Frames &#9662;</a>
-          <ul class="dropDown">
-            <li><a href="../refFrame_Subpages/ref_chapt2.html">Coordinate Systems</a></li>
-            <br>
-            <li><a href="../refFrame_Subpages/ref_chapt3.html">Changing Frames</a></li>
-            <br>
-            <li><a href="../refFrame_Subpages/ref_chapt4.html">Frame vs Object</a></li>
-          </ul>
-        </li>
-
-        <li><a href="../moving_From_2D.html">Moving From 2D &#9662;</a>
-          <ul class="dropDown">
-            <li><a href="1eulerRotations.html">Euler Rotations</a></li>
-            <br>
-            <li><a href="2otherProperties.html">Other Properties</a></li>
-            <br>
-            <li><a href="3fullRotation.html">Full Rotations</a></li>
-            <br>
-            <li><a href="4yawPitchRoll.html">Yaw-Pitch-Roll</a></li>
-          </ul>
-        </li>
-        </li>
-      </ul>
-    </nav>
-
-
-  </div>
-
-  <button onclick="topFunction()" id="myBtn" title="Return to Top">&#8593;</button>
+  <div class="nav-placeholder" id="nav-placeholder"></div>
 
   <div class="contentWrapper">
 
@@ -85,18 +43,18 @@
       values.</p>
 
 
-      <br>
+    <br>
 
 
-      <br>
-      <br>
-      <br>
-      <br>
-      <a href="../moving_From_2D.html" class="previous">&larr; Previous</a>
-      <a href="2otherProperties.html" class="next">Next &rarr;</a>
+    <br>
+    <br>
+    <br>
+    <br>
+    <a href="../moving_From_2D.html" class="previous">&larr; Previous</a>
+    <a href="2otherProperties.html" class="next">Next &rarr;</a>
 
-      <br>
-      <br>
+    <br>
+    <br>
 
     <section class="footnotes" role="doc-endnotes">
       <hr />
@@ -111,7 +69,13 @@
 
   </div>
 
-
+  <!--Navigation bar-->
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <script>
+    $(function() {
+      $("#nav-placeholder").load("../../../pages/nav.html");
+    });
+  </script>
 
 </body>
 

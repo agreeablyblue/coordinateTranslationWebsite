@@ -5,54 +5,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Coordinate Translations</title>
   <link rel="stylesheet" href="../../css/reference_Frames.css">
   <title>Reference Frames</title>
 </head>
 
 <body>
 
-  <div class="wrapper">
 
-    <div class="antLogo">
-      <img src="../../../../images/ANTLogo.png" width="125" height="125" alt="ANT Center Logo" />
-    </div>
-
-    <header class="header1">
-      <h1></h1>
-    </header>
-
-
-    <nav>
-      <ul class="navMenu">
-        <li><a href="../../index.html">Home</a></li>
-        <li><a href="../reference_Frames.html">Reference Frames &#9662;</a>
-          <ul class="dropDown">
-            <li><a href="ref_chapt2.html">Coordinate Systems</a></li>
-            <br>
-            <li><a href="ref_chapt3.html">Changing Frames</a></li>
-            <br>
-            <li><a href="ref_chapt4.html">Frame vs Object</a></li>
-          </ul>
-        </li>
-
-        <li><a href="../moving_From_2D.html">Moving From 2D &#9662;</a>
-          <ul class="dropDown">
-            <li><a href="../2D_Subpages/1eulerRotations.html">Euler Rotations</a></li>
-            <br>
-            <li><a href="../2D_Subpages/2otherProperties.html">Other Properties</a></li>
-            <br>
-            <li><a href="../2D_Subpages/3fullRotation.html">Full Rotations</a></li>
-            <br>
-            <li><a href="../2D_Subpages/4yawPitchRoll.html">Yaw-Pitch-Roll</a></li>
-          </ul>
-        </li>
-        </li>
-      </ul>
-    </nav>
-  </div>
-
-  <button onclick="topFunction()" id="myBtn" title="Return to Top">&#8593;</button>
+  <div class="nav-placeholder" id="nav-placeholder"></div>
 
   <div class="contentWrapper">
 
@@ -274,15 +234,23 @@
   <script src="../../scripts/buttonScript.js"></script>
 
   <script src="../../js/three.js"></script>
-	<script src="../../js/MTLLoader.js"></script>
-	<script src="../../js/OBJLoader.js"></script>
-	<script src="../../js/OrbitControls.js"></script>
-	<script src="../../js/TransformControls.js"></script>
-	<!-- End ThreeJS Call -->
+  <script src="../../js/MTLLoader.js"></script>
+  <script src="../../js/OBJLoader.js"></script>
+  <script src="../../js/OrbitControls.js"></script>
+  <script src="../../js/TransformControls.js"></script>
+  <!-- End ThreeJS Call -->
 
-	<!-- Script Call For Developer Defined ThreeJS Scene Render -->
-	<script src="../../scripts/render_point.js"></script>
-	<!-- End Script Call -->
+  <!-- Script Call For Developer Defined ThreeJS Scene Render -->
+  <script src="../../scripts/render_point.js"></script>
+  <!-- End Script Call -->
+
+  <!--Navigation bar-->
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <script>
+    $(function() {
+      $("#nav-placeholder").load("../../../pages/nav.html");
+    });
+  </script>
 
 </body>
 
