@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="../../css/reference_Frames.css">
+  <title>Reference Frames</title>
+</head>
+
+<body>
+
+
+  <div class="nav-placeholder" id="nav-placeholder"></div>
+
+  <div class="contentWrapper">
+
+            <p><a name="toc.3.3">
+                <h2>3.3&nbsp;Combined rotation and translation</h2>
+                Now, let's combine these two operations together. <i>Note that you can <b>never</b> add vectors together unless the numbers inside those vectors correspond with the same vector directions</i>. This is the cause of many mistakes.
+                Always, always align axes first! Linguistically, to convert a vector <b>x</b> from my coordinate system <b>x</b><sup>m</sup> to yours (<b>x</b><sup>y</sup>):
+                <ol>
+
+                  <li> Rotate the vector so the axes are aligned
+
+                  <li> Add the origin of my coordinate frame (in your axes!) to the rotated vector
+                </ol>
+
+                Put mathematically:
+
+                <table cellspacing=0 border=0 align=center>
+                  <tr>
+                    <td nowrap align="center">
+
+                      <b>x</b><sup>y</sup> = C<sup>y</sup><sub>m</sub> <b>x</b><sup>m</sup> + <b>m</b><sup>y</sup>
+
+                    </td>
+                  </tr>
+                </table>
+
+                The inverse of this operation can also be expressed as:
+
+                <table cellspacing=0 border=0 align=center>
+                  <tr>
+                    <td nowrap align="center">
+
+                      <b>x</b><sup>m</sup> = C<sup>m</sup><sub>y</sub> <b>x</b><sup>y</sup> + <b>y</b><sup>m</sup>
+
+                    </td>
+                  </tr>
+                </table>
+
+                Note that <b>m</b><sup>y</sup> = <font face=symbol>-</font>C<sup>y</sup><sub>m</sub><b>y</b><sup>m</sup>, so we also have:
+
+                <table cellspacing=0 border=0 align=center>
+                  <tr>
+                    <td nowrap align="center">
+
+                      <b>x</b><sup>m</sup> = C<sup>m</sup><sub>y</sub>(<b>x</b><sup>y</sup>
+                      <font face=symbol>-</font> <b>m</b><sup>y</sup>)
+
+                    </td>
+                  </tr>
+                </table>
+
+
+                Let's walk through an example. In Figure 4, the point <b>x</b><sup>y</sup> is at (3,2), the m coordinate frame axes are rotated 45° from the y coordinate frame axes, and <b>m</b><sup>y</sup> is (1,2). Given this information, we can
+                solve for <b>x</b><sup>m</sup>.
+                <br>
+                <br>
+                <img src="../../images/moveFrom2D/givenRotationMatrix6.png" width="364" height="337" alt="Example 1" style="border:2px solid black; display:block; margin-left: auto; margin-right: auto;" />
+                <br>
+
+                <img src="../../images/moveFrom2D/report1_example4.png" width="817" height="374" alt="Example 1" style="border:2px solid black; display:block; margin-left: auto; margin-right: auto;" />
+                <br>
+
+                Now, let's see if we can go backwards and recover the original vector as well.
+
+                <br>
+                <br>
+                <img src="../../images/moveFrom2D/givenRotationMatrix7.png" width="378" height="246" alt="Example 1" style="border:2px solid black; display:block; margin-left: auto; margin-right: auto;" />
+                <br>
+
+                This demonstrates the capability to move from any coordinate frame to another coordinate frame and back again without loss of information.
+
+                <br>
+                <br>
+                <div class="container" id="container"></div>
+                <br>
+                <br>
+                <br>
+                <br>
+                <a href="refFrames4.html" class="previous">&larr; Previous</a>
+                <a href="refFrames6.html" class="next">Next &rarr;</a>
+
+                <br>
+                <br>
+                <hr />
+                <br>
+  </div>
+
+  <script src="../../scripts/buttonScript.js"></script>
+
+  <script src="../../js/three.js"></script>
+  <script src="../../js/MTLLoader.js"></script>
+  <script src="../../js/OBJLoader.js"></script>
+  <script src="../../js/OrbitControls.js"></script>
+  <script src="../../js/TransformControls.js"></script>
+  <!-- End ThreeJS Call -->
+
+  <!-- Script Call For Developer Defined ThreeJS Scene Render -->
+  <script src="../../scripts/render_point.js"></script>
+  <!-- End Script Call -->
+
+  <!--Navigation bar-->
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <script>
+    $(function() {
+      $("#nav-placeholder").load("../../../pages/nav.html");
+    });
+  </script>
+
+</body>
+
+</html>

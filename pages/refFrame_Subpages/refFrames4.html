@@ -16,37 +16,8 @@
 
   <div class="contentWrapper">
 
-    <p><a name="toc.3">
-        <h1>3&nbsp;Changing Coordinate Frames</h1>
-        A reference frame for Cartesian coordinate systems is defined by two things: an origin and a set of orthonormal vectors that define directions away from the origin. Let's start with a change of origin location. We will be attempting to
-        transform from my (<i>m</i>) coordinate frame to yours (<i>y</i>).
-
-        <br>
-        <br>
-        <hr />
-        <br>
-
-        <p><small><a name="toc.3.1">
-              <h2>3.1&nbsp;Handling a change in coordinate origin</h2></small>
-          <i>If you and I are both facing the same direction</i>, all you need to know is where <b>I</b> am in your coordinate frame. We denote this quantity <b>m</b> where the coordinate frame's letter is bolded to show it is a vector. The
-          transformation is now a simple vector addition operation
-          <br>
-          <center><b>x<sup>y</sup></b>=<b>x<sup>m</sup> + m</b></center>
-
-          This addition is illustrated in Figure 2. While this equation is conceptually very simple, please realize it is for pedagogical purposes only! In fact, <i>please forget it</i> because the caveat to use it, that the axes are the same for the
-          coordinate frames m and y, makes it almost useless. (That is why that equation is <i>not</i> numbered! Please don't refer to it!)
-
-          <br>
-          <br>
-          <img src="../../images/moveFrom2D/report1_example2.png" width="705" height="432" alt="Example 1" style="border:2px solid black; display:block; margin-left: auto; margin-right: auto;" />
-
-          <br>
-          <br>
-          <hr />
-          <br>
-
-          <p><small><a name="toc.3.2">
-                <h2>3.2&nbsp;Handling different coordinate frame axes</h2></small>
+          <p><a name="toc.3.2">
+                <h2>3.2&nbsp;Handling different coordinate frame axes</h2>
             When transforming from one coordinate frame to another, we need to understand how the basis vectors are different between the coordinate frames. The mapping of the basis vectors from one reference frame into another is generally referred
             to as a <i>rotation</i>. In two dimensions (2-d), this is represented by a single rotation angle as shown in Figure 3. To convert a vector from one coordinate frame's set of vectors into another, we use a <i>Given's rotation</i> matrix,
             defined as:
@@ -103,8 +74,8 @@
           <hr />
           <br>
 
-          <p><small><a name="toc.3.2.1">
-                <h3>3.2.1&nbsp;Rotation Matrix Properties</h3></small>
+          <p><a name="toc.3.2.1">
+                <h3>3.2.1&nbsp;Rotation Matrix Properties</h3>
 
             Note that the Given's rotation matrix has some special properties that we should discuss. Mathematically, the matrix is a <i>special</i> orthonormal matrix, meaning it has the following properties:
           <ul>
@@ -144,91 +115,16 @@
 
             <br>
             <br>
+
+            <a href="refFrames3.html" class="previous">&larr; Previous</a>
+            <a href="refFrames5.html" class="next">Next &rarr;</a>
+
+            <br>
+            <br>
             <hr />
             <br>
 
-            <p><a name="toc.3.3">
-                <h2>3.3&nbsp;Combined rotation and translation</h2>
-                Now, let's combine these two operations together. <i>Note that you can <b>never</b> add vectors together unless the numbers inside those vectors correspond with the same vector directions</i>. This is the cause of many mistakes.
-                Always, always align axes first! Linguistically, to convert a vector <b>x</b> from my coordinate system <b>x</b><sup>m</sup> to yours (<b>x</b><sup>y</sup>):
-                <ol>
 
-                  <li> Rotate the vector so the axes are aligned
-
-                  <li> Add the origin of my coordinate frame (in your axes!) to the rotated vector
-                </ol>
-
-                Put mathematically:
-
-                <table cellspacing=0 border=0 align=center>
-                  <tr>
-                    <td nowrap align="center">
-
-                      <b>x</b><sup>y</sup> = C<sup>y</sup><sub>m</sub> <b>x</b><sup>m</sup> + <b>m</b><sup>y</sup>
-
-                    </td>
-                  </tr>
-                </table>
-
-                The inverse of this operation can also be expressed as:
-
-                <table cellspacing=0 border=0 align=center>
-                  <tr>
-                    <td nowrap align="center">
-
-                      <b>x</b><sup>m</sup> = C<sup>m</sup><sub>y</sub> <b>x</b><sup>y</sup> + <b>y</b><sup>m</sup>
-
-                    </td>
-                  </tr>
-                </table>
-
-                Note that <b>m</b><sup>y</sup> = <font face=symbol>-</font>C<sup>y</sup><sub>m</sub><b>y</b><sup>m</sup>, so we also have:
-
-                <table cellspacing=0 border=0 align=center>
-                  <tr>
-                    <td nowrap align="center">
-
-                      <b>x</b><sup>m</sup> = C<sup>m</sup><sub>y</sub>(<b>x</b><sup>y</sup>
-                      <font face=symbol>-</font> <b>m</b><sup>y</sup>)
-
-                    </td>
-                  </tr>
-                </table>
-
-
-                Let's walk through an example. In Figure 4, the point <b>x</b><sup>y</sup> is at (3,2), the m coordinate frame axes are rotated 45° from the y coordinate frame axes, and <b>m</b><sup>y</sup> is (1,2). Given this information, we can
-                solve for <b>x</b><sup>m</sup>.
-                <br>
-                <br>
-                <img src="../../images/moveFrom2D/givenRotationMatrix6.png" width="364" height="337" alt="Example 1" style="border:2px solid black; display:block; margin-left: auto; margin-right: auto;" />
-                <br>
-
-                <img src="../../images/moveFrom2D/report1_example4.png" width="817" height="374" alt="Example 1" style="border:2px solid black; display:block; margin-left: auto; margin-right: auto;" />
-                <br>
-
-                Now, let's see if we can go backwards and recover the original vector as well.
-
-                <br>
-                <br>
-                <img src="../../images/moveFrom2D/givenRotationMatrix7.png" width="378" height="246" alt="Example 1" style="border:2px solid black; display:block; margin-left: auto; margin-right: auto;" />
-                <br>
-
-                This demonstrates the capability to move from any coordinate frame to another coordinate frame and back again without loss of information.
-
-                <br>
-                <br>
-                <div class="container" id="container"></div>
-                <br>
-                <br>
-                <br>
-                <br>
-                <a href="ref_chapt3.html" class="previous">&larr; Previous</a>
-                <a href="ref_chapt4.html" class="next">Next &rarr;</a>
-
-                <br>
-                <br>
-                <hr />
-                <br>
   </div>
 
   <script src="../../scripts/buttonScript.js"></script>
