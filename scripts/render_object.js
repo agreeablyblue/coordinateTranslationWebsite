@@ -22,7 +22,10 @@ window.addEventListener('resize', function() {
   camera.updateProjectionMatrix();
 });
 
-//Orbit control implmentation
+//Focuses the camera on the rendered object
+camera.position.y = 650;
+camera.rotation.order = "YXZ";
+
 
 
 //TransformControls
@@ -163,28 +166,22 @@ group.add(cubeNegative90);
 
 cube0.position.x = 0;
 cube0.position.z = -405;
+cube0.rotation.y = 90 * Math.PI / 180;
 
 cube90.position.x = -405;
 cube90.position.z = 0;
+cube90.rotation.y = 90 * Math.PI / 180;
 
 cube180.position.x = 0;
 cube180.position.z = 405;
+cube180.rotation.y = 90 * Math.PI / 180;
 
 cubeNegative90.position.x = 405;
 cubeNegative90.position.z = 0;
+cubeNegative90.rotation.y = 90 * Math.PI / 180;
 
 group.add(gridHelper);
 scene.add(group);
-
-
-
-
-//Focuses the camera on the rendered object
-camera.position.y = 650;
-camera.lookAt(0, 0, 0);
-camera.rotation.y = 90 * Math.PI / 180;
-camera.rotation.order = "YXZ";
-
 
 
 //Ambient light generator
@@ -252,7 +249,7 @@ var animate = function() {
 
   document.getElementById("yAngle").innerHTML = "Y-Axis Rotation: " + y + "°";
 
-
+  camera.rotation.y = 90 * Math.PI / 180;
   renderer.render(scene, camera);
 };
 
