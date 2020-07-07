@@ -11,7 +11,8 @@ renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth * 0.55, window.innerHeight * 0.55);
 container.appendChild(renderer.domElement);
 
-renderer.setClearColor("#efefef");
+renderer.setClearColor("#F5F5F5");
+
 
 //Scalable window resizing
 window.addEventListener('resize', function() {
@@ -62,7 +63,7 @@ mtlLoader.load('privateJet.mtl', function(materials) {
 
 });
 
-//Skybox
+/*//Skybox
 var materialArray = [];
 var tex_ft = new THREE.TextureLoader().load('../../assets/skybox/clouds1_front.png');
 var tex_bk = new THREE.TextureLoader().load('../../assets/skybox/clouds1_back.png');
@@ -99,7 +100,7 @@ for (var i = 0; i < 6; i++)
 var skyboxGeo = new THREE.BoxGeometry(10000, 10000, 10000);
 var skybox = new THREE.Mesh(skyboxGeo, materialArray);
 scene.add(skybox);
-
+*/
 
 var group = new THREE.Group();
 //Grid Helper creator
@@ -186,8 +187,9 @@ scene.add(group);
 
 //Ambient light generator
 var pointLight = new THREE.PointLight(0xFFFFFF, 20, 1000);
-pointLight.position.set(0, 500, 0);
+pointLight.position.set(0, 900, 0);
 scene.add(pointLight);
+
 
 //Function to implement orbit OrbitControls
 var orbit = new THREE.OrbitControls(camera, renderer.domElement);

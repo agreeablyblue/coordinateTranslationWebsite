@@ -8,7 +8,7 @@ renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth * 0.55, window.innerHeight * 0.55);
 container.appendChild(renderer.domElement);
 
-renderer.setClearColor("#efefef");
+renderer.setClearColor("#F5F5F5");
 
 //Scalable window resizing
 window.addEventListener('resize', function() {
@@ -46,43 +46,6 @@ transform.showZ = false;
   transform.setMode("rotate");
 
 
-//Skybox
-var materialArray = [];
-var tex_ft = new THREE.TextureLoader().load('../../assets/skybox/clouds1_front.png');
-var tex_bk = new THREE.TextureLoader().load('../../assets/skybox/clouds1_back.png');
-var tex_up = new THREE.TextureLoader().load('../../assets/skybox/clouds1_up.png');
-var tex_dn = new THREE.TextureLoader().load('../../assets/skybox/clouds1_down.png');
-var tex_rt = new THREE.TextureLoader().load('../../assets/skybox/clouds1_right.png');
-var tex_lf = new THREE.TextureLoader().load('../../assets/skybox/clouds1_left.png');
-
-
-
-materialArray.push(new THREE.MeshBasicMaterial({
-  map: tex_ft
-}));
-materialArray.push(new THREE.MeshBasicMaterial({
-  map: tex_bk
-}));
-materialArray.push(new THREE.MeshBasicMaterial({
-  map: tex_up
-}));
-materialArray.push(new THREE.MeshBasicMaterial({
-  map: tex_dn
-}));
-materialArray.push(new THREE.MeshBasicMaterial({
-  map: tex_rt
-}));
-materialArray.push(new THREE.MeshBasicMaterial({
-  map: tex_lf
-}));
-
-for (var i = 0; i < 6; i++)
-  materialArray[i].side = THREE.BackSide;
-
-
-var skyboxGeo = new THREE.BoxGeometry(10000, 10000, 10000);
-var skybox = new THREE.Mesh(skyboxGeo, materialArray);
-scene.add(skybox);
 
 
 var group = new THREE.Group();
