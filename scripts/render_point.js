@@ -57,39 +57,39 @@ var gridHelper = new THREE.GridHelper(size, divisions);
 var geometry = new THREE.BoxGeometry (60, 1, 60);
 
 var cube0Materials = [
-  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/0.png'), side: THREE.DoubleSide, transparent: true } ),
-  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/0.png'), side: THREE.DoubleSide, transparent: true } ),
-  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/0.png'), side: THREE.DoubleSide, transparent: true } ),
-  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/0.png'), side: THREE.DoubleSide, transparent: true } ),
-  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/0.png'), side: THREE.DoubleSide, transparent: true } ),
-  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/0.png'), side: THREE.DoubleSide, transparent: true } ),
+  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/xyLabels/positiveX.png'), side: THREE.DoubleSide, transparent: true } ),
+  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/xyLabels/positiveX.png'), side: THREE.DoubleSide, transparent: true } ),
+  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/xyLabels/positiveX.png'), side: THREE.DoubleSide, transparent: true } ),
+  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/xyLabels/positiveX.png'), side: THREE.DoubleSide, transparent: true } ),
+  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/xyLabels/positiveX.png'), side: THREE.DoubleSide, transparent: true } ),
+  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/xyLabels/positiveX.png'), side: THREE.DoubleSide, transparent: true } ),
 ];
 
 var cube90Materials = [
-  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/90.png'), side: THREE.DoubleSide, transparent: true } ),
-  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/90.png'), side: THREE.DoubleSide, transparent: true } ),
-  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/90.png'), side: THREE.DoubleSide, transparent: true } ),
-  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/90.png'), side: THREE.DoubleSide, transparent: true } ),
-  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/90.png'), side: THREE.DoubleSide, transparent: true } ),
-  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/90.png'), side: THREE.DoubleSide, transparent: true } ),
+  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/xyLabels/positiveY.png'), side: THREE.DoubleSide, transparent: true } ),
+  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/xyLabels/positiveY.png'), side: THREE.DoubleSide, transparent: true } ),
+  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/xyLabels/positiveY.png'), side: THREE.DoubleSide, transparent: true } ),
+  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/xyLabels/positiveY.png'), side: THREE.DoubleSide, transparent: true } ),
+  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/xyLabels/positiveY.png'), side: THREE.DoubleSide, transparent: true } ),
+  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/xyLabels/positiveY.png'), side: THREE.DoubleSide, transparent: true } ),
 ];
 
 var cube180Materials = [
-  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/180.png'), side: THREE.DoubleSide, transparent: true } ),
-  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/180.png'), side: THREE.DoubleSide, transparent: true } ),
-  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/180.png'), side: THREE.DoubleSide, transparent: true } ),
-  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/180.png'), side: THREE.DoubleSide, transparent: true } ),
-  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/180.png'), side: THREE.DoubleSide, transparent: true } ),
-  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/180.png'), side: THREE.DoubleSide, transparent: true } ),
+  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/xyLabels/minusX.png'), side: THREE.DoubleSide, transparent: true } ),
+  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/xyLabels/minusX.png'), side: THREE.DoubleSide, transparent: true } ),
+  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/xyLabels/minusX.png'), side: THREE.DoubleSide, transparent: true } ),
+  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/xyLabels/minusX.png'), side: THREE.DoubleSide, transparent: true } ),
+  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/xyLabels/minusX.png'), side: THREE.DoubleSide, transparent: true } ),
+  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/xyLabels/minusX.png'), side: THREE.DoubleSide, transparent: true } ),
 ];
 
 var cubeNegative90Materials = [
-  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/-90.png'), side: THREE.DoubleSide, transparent: true } ),
-  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/-90.png'), side: THREE.DoubleSide, transparent: true } ),
-  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/-90.png'), side: THREE.DoubleSide, transparent: true } ),
-  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/-90.png'), side: THREE.DoubleSide, transparent: true } ),
-  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/-90.png'), side: THREE.DoubleSide, transparent: true } ),
-  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/-90.png'), side: THREE.DoubleSide, transparent: true } ),
+  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/xyLabels/minusY.png'), side: THREE.DoubleSide, transparent: true } ),
+  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/xyLabels/minusY.png'), side: THREE.DoubleSide, transparent: true } ),
+  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/xyLabels/minusY.png'), side: THREE.DoubleSide, transparent: true } ),
+  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/xyLabels/minusY.png'), side: THREE.DoubleSide, transparent: true } ),
+  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/xyLabels/minusY.png'), side: THREE.DoubleSide, transparent: true } ),
+  new THREE.MeshBasicMaterial( {map: new THREE.TextureLoader( ).load('../../assets/xyLabels/minusY.png'), side: THREE.DoubleSide, transparent: true } ),
 ];
 
 
