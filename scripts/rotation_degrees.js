@@ -100,12 +100,28 @@ orbit.enabled = false;
 var aniButton = document.getElementById('btnStart');
 //Switch case statement variable
 var moveCase = 1;
+var exampleText = document.getElementById('exampleText');
 
 if (aniButton) {
   aniButton.addEventListener("click", function() {
+    switch(moveCase){
+      case 1:
+      exampleText.innerHTML = 'Right-handed rotation about <b>e</b><sub>3</sub>';
+      aniButton.innerHTML = 'Next &rarr;';
       animateFirstRotation();
-      setTimeout(animateRedraw, 4000);
+      moveCase = 2;
+      break;
+      case 2:
+      animateRedraw();
       animateSecondRotation();
+      aniButton.innerHTML = 'Reset';
+      exampleText.innerHTML = 'Left-handed rotation about <b>e</b><sub>3</sub>';
+      moveCase = 3;
+      break;
+      case 3:
+      location.reload();
+      break;
+    }
 
   });
 }
@@ -156,13 +172,13 @@ var firstRotation = function( )
 var secondRotation = function( )
 {
 
-  if(line4.rotation.y < THREE.Math.degToRad(30))
+  while(line4.rotation.y > THREE.Math.degToRad(-30))
   {
-    line4.rotation.y += THREE.Math.degToRad(0.3);
+    line4.rotation.y += THREE.Math.degToRad(-0.3);
   }
-  if(line5.rotation.y < THREE.Math.degToRad(30))
+  while(line5.rotation.y > THREE.Math.degToRad(-30))
   {
-    line5.rotation.y += THREE.Math.degToRad(0.3);
+    line5.rotation.y += THREE.Math.degToRad(-0.3);
   }
 
 };
