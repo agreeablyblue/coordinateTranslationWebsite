@@ -1,13 +1,16 @@
+//Scene to hold all 3D objects
 var scene = new THREE.Scene();
 
+//Camera to view the scene, field of view, size, and render distance are set in its constructor
 var camera = new THREE.PerspectiveCamera(75, (window.innerWidth / window.innerHeight), 0.1, 10000);
 
+//Container that holds all the objects which is an element of moving_From2D.html
 var container = document.getElementById('container');
 
+//Creats renderer which is what allows the scene of 3D objects to be displayed
 renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth * 0.55, window.innerHeight * 0.55);
 container.appendChild(renderer.domElement);
-
 renderer.setClearColor("#F5F5F5");
 
 //Scalable window resizing
@@ -19,78 +22,62 @@ window.addEventListener('resize', function() {
   camera.updateProjectionMatrix();
 });
 
-//Line 1 creation (e1 at 0 y +x)
-var material = new THREE.LineBasicMaterial({
-  color: 0x00000,
-  linewidth: 10
-});
-var points = [];
-points.push(new THREE.Vector3(400, 0, 0));
-points.push(new THREE.Vector3(0, 0, 0));
-points.push(new THREE.Vector3(0, 0, 0));
+//Arrow Helpers which act as guide lines for the coordinate system
+var dir1 = new THREE.Vector3(1, 0, 0);
+var dir2 = new THREE.Vector3(0, 0, -400);
+var dir3 = new THREE.Vector3(-200, 0, 200);
 
-var geometry = new THREE.BufferGeometry().setFromPoints(points);
+//normalize the direction vector (convert to vector of length 1)
+dir1.normalize();
+dir2.normalize();
+dir3.normalize();
 
-var line = new THREE.Line(geometry, material);
+//Defining variables for all three arrow helpers
+var origin = new THREE.Vector3(0, 0, 0);
+var length = 400;
+var hex = 0x000000;
+var headLength = 20;
+var headWidth = 15;
 
-//Line 2 creation (e2 oriented straight up)
-var material2 = new THREE.LineBasicMaterial({
+//Creates the arrow helpers based on the variables specified above
+var arrowHelper1 = new THREE.ArrowHelper(dir1, origin, length, hex, headLength, headWidth);
+var arrowHelper2 = new THREE.ArrowHelper(dir2, origin, length, hex, headLength, headWidth);
+var arrowHelper3 = new THREE.ArrowHelper(dir3, origin, length, hex, headLength, headWidth);
+
+//Adds the arrow helpers to the scene
+scene.add(arrowHelper1);
+scene.add(arrowHelper2);
+scene.add(arrowHelper3);
+
+//Line 1 creation (line 1 and 2 are rotated during the animation)
+var line1Material = new THREE.LineBasicMaterial({
   color: 0x000000,
   linewidth: 10
 });
-var points2 = [];
-points2.push(new THREE.Vector3(0, 0, -400));
-points2.push(new THREE.Vector3(0, 0, 0));
-points2.push(new THREE.Vector3(0, 0, 0));
+var line1Points = [];
+line1Points.push(new THREE.Vector3(0, 0, -400));
+line1Points.push(new THREE.Vector3(0, 0, 0));
+line1Points.push(new THREE.Vector3(0, 0, 0));
 
-var geometry2 = new THREE.BufferGeometry().setFromPoints(points2);
+var line1Geometry = new THREE.BufferGeometry().setFromPoints(line1Points);
 
-var line2 = new THREE.Line(geometry2, material2);
+var line1 = new THREE.Line(line1Geometry, line1Material);
 
-
-//Line 3 creation (e3 oriented -y -x)
-var material3 = new THREE.LineBasicMaterial({
+//Line 2 creation (line 1 and 2 are rotated during the animation)
+var line2Material = new THREE.LineBasicMaterial({
   color: 0x000000,
   linewidth: 10
 });
-var points3 = [];
-points3.push(new THREE.Vector3(-200, 0, 200));
-points3.push(new THREE.Vector3(0, 0, 0));
-points3.push(new THREE.Vector3(0, 0, 0));
+var line2Points = [];
+line2Points.push(new THREE.Vector3(400, 0, 0));
+line2Points.push(new THREE.Vector3(0, 0, 0));
+line2Points.push(new THREE.Vector3(0, 0, 0));
 
-var geometry3 = new THREE.BufferGeometry().setFromPoints(points3);
+var line2Geometry = new THREE.BufferGeometry().setFromPoints(line2Points);
 
-var line3 = new THREE.Line(geometry3, material3);
+var line2 = new THREE.Line(line2Geometry, line2Material);
 
-//Line 4 creation (line 4 and 5 are rotated during the animation)
-var material4 = new THREE.LineBasicMaterial({
-  color: 0x000000,
-  linewidth: 10
-});
-var points4 = [];
-points4.push(new THREE.Vector3(0, 0, -400));
-points4.push(new THREE.Vector3(0, 0, 0));
-points4.push(new THREE.Vector3(0, 0, 0));
-
-var geometry4 = new THREE.BufferGeometry().setFromPoints(points4);
-
-var line4 = new THREE.Line(geometry4, material4);
-
-//Line 5 creation (line 4 and 5 are rotated during the animation)
-var material5 = new THREE.LineBasicMaterial({
-  color: 0x000000,
-  linewidth: 10
-});
-var points5 = [];
-points5.push(new THREE.Vector3(400, 0, 0));
-points5.push(new THREE.Vector3(0, 0, 0));
-points5.push(new THREE.Vector3(0, 0, 0));
-
-var geometry5 = new THREE.BufferGeometry().setFromPoints(points5);
-
-var line5 = new THREE.Line(geometry5, material5);
-
-// Create an arc
+//Defines points for the arc
 var curve = new THREE.SplineCurve([
   new THREE.Vector2(150, 0),
   new THREE.Vector2(160, 42.5),
@@ -98,46 +85,50 @@ var curve = new THREE.SplineCurve([
 
 ]);
 
-var points6 = curve.getPoints(50);
-var geometry6 = new THREE.BufferGeometry().setFromPoints(points6);
+//Creates the arc arc geometry based on defined points
+var curvePoints = curve.getPoints(50);
+var curveGeometry = new THREE.BufferGeometry().setFromPoints(curvePoints);
 
-var material6 = new THREE.LineBasicMaterial({
+var curveMaterial = new THREE.LineBasicMaterial({
   color: 0xff0000
 });
 
-// Create the final object to add to the scene
-var splineObject = new THREE.Line(geometry6, material6);
+// Create the arc object to add to the scene
+var splineObject = new THREE.Line(curveGeometry, curveMaterial);
 splineObject.rotation.x = THREE.Math.degToRad(-90);
 
 //Add lines to the scene
-scene.add(line);
+scene.add(line1);
 scene.add(line2);
-scene.add(line3);
-scene.add(line4);
-scene.add(line5);
 
-var line4Rotation = line4.rotation.y;
-var line5Rotation = line5.rotation.y;
+//Holders to keep track of line 1 and line 2's original orientation before changes are made later in the execution of the program
+var line1Rotation = line1.rotation.y;
+var line2Rotation = line2.rotation.y;
 
-line4.linecap = 'butt';
+
 //Focuses the camera on the rendered object
 camera.position.y = 650;
 camera.lookAt(0, 0, 0);
 camera.rotation.y = 90 * Math.PI / 180;
 camera.rotation.order = "YXZ";
 
-//Function to implement orbit OrbitControls
+//Function to implement orbit OrbitControls - used for testing, not part of the functionality of the program
 var orbit = new THREE.OrbitControls(camera, renderer.domElement);
-orbit.enabled = true;
+orbit.enabled = false;
 
 //Pointer to the camera movement button
 var aniButton = document.getElementById('btnStart');
-//Switch case statement variable
+
+//Switch case statement variable which keeps track of how many times the animation button has been clicked
 var moveCase = 1;
+
+//Div from moving_From_2D.html that holds information on the demonstration provided by the animation
 var exampleText = document.getElementById('exampleText');
 
+//Checks if the animation button has been located, if it has then an event listener checks for clicks by the user
 if (aniButton) {
   aniButton.addEventListener("click", function() {
+    //Switch statement controlling the affects of clicking the Play Animation button
     switch (moveCase) {
       case 1:
         //Update the text description of the demo and the animation button
@@ -145,10 +136,10 @@ if (aniButton) {
         aniButton.innerHTML = 'Next &rarr;';
 
         //Update line colors to highlight the change in position
-        line4.material.color = new THREE.Color(0xff0000);
-        line4.material.needsUpdate = true;
-        line5.material.color = new THREE.Color(0xff0000);
-        line5.material.needsUpdate = true;
+        line1.material.color = new THREE.Color(0xff0000);
+        line1.material.needsUpdate = true;
+        line2.material.color = new THREE.Color(0xff0000);
+        line2.material.needsUpdate = true;
 
         //Call the function that animates the first rotation
         animateFirstRotation();
@@ -199,56 +190,56 @@ var animate = function() {
   renderer.render(scene, camera);
 };
 
-//Function that animates the first rotation of lines 4 and 5
+//Function that animates the first rotation of lines 1 and 2
 var animateFirstRotation = function() {
   requestAnimationFrame(animateFirstRotation);
   firstRotation();
   renderer.render(scene, camera);
 };
 
-//Function that animates the second rotation of lines 4 and 5
+//Function that animates the second rotation of lines 1 and 2
 var animateSecondRotation = function() {
   requestAnimationFrame(animateSecondRotation);
   secondRotation();
   renderer.render(scene, camera);
 };
 
-//Function that resets the rotation of lines 4 and 5
+//Function that resets the rotation of lines 1 and 2
 var animateRedraw = function() {
   requestAnimationFrame(animateRedraw);
   redrawScene();
   renderer.render(scene, camera);
 };
 
-//Resets lines 4 and 5 to their original orientations
+//Resets lines 1 and 2 to their original orientations
 var redrawScene = function() {
-  line4.rotation.y = line4Rotation;
-  line5.rotation.y = line5Rotation;
+  line1.rotation.y = line1Rotation;
+  line2.rotation.y = line2Rotation;
 };
 
-//Rotates lines 4 and 5 30 degrees incrementally from their original location
+//Rotates lines 1 and 2 30 degrees incrementally from their original location
 var firstRotation = function() {
-  if (line4.rotation.y < THREE.Math.degToRad(30)) {
-    line4.rotation.y += THREE.Math.degToRad(0.3);
+  if (line1.rotation.y < THREE.Math.degToRad(30)) {
+    line1.rotation.y += THREE.Math.degToRad(0.3);
   }
-  if (line5.rotation.y < THREE.Math.degToRad(30)) {
-    line5.rotation.y += THREE.Math.degToRad(0.3);
+  if (line2.rotation.y < THREE.Math.degToRad(30)) {
+    line2.rotation.y += THREE.Math.degToRad(0.3);
   }
 
 };
 
 
-//Rotates lines 4 and 5 to -30 degrees of their original location
+//Rotates lines 1 and 2 to -30 degrees of their original location
 var secondRotation = function() {
 
-  while (line4.rotation.y > THREE.Math.degToRad(-30)) {
-    line4.rotation.y += THREE.Math.degToRad(-0.3);
+  while (line1.rotation.y > THREE.Math.degToRad(-30)) {
+    line1.rotation.y += THREE.Math.degToRad(-0.3);
   }
-  while (line5.rotation.y > THREE.Math.degToRad(-30)) {
-    line5.rotation.y += THREE.Math.degToRad(-0.3);
+  while (line2.rotation.y > THREE.Math.degToRad(-30)) {
+    line2.rotation.y += THREE.Math.degToRad(-0.3);
   }
 
 };
 
-//Function call to render the scene 
+//Function call to render the scene
 animate();
