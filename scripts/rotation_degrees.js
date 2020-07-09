@@ -158,6 +158,7 @@ if (aniButton) {
       case 2:
         //Update the text description of the demo and the animation button
         aniButton.innerHTML = 'Reset';
+        aniButton.style.background = '#ff0000';
         exampleText.innerHTML = 'Left-handed rotation about <b>e</b><sub>3</sub>';
 
         //Calls the function that resets the scene
