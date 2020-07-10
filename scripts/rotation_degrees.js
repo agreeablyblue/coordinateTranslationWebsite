@@ -148,7 +148,7 @@ if (aniButton) {
         setTimeout(function() {
           scene.add(splineObject);
 
-        }, 1000);
+        }, 2000);
 
         //Update the move case which is used to keep track of how many times the button has been clicked
         moveCase = 2;
