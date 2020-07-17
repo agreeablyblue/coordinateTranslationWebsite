@@ -28,8 +28,13 @@
         location in relationship to the origin. Formally, the method for taking a set of numbers and turning it into a relative location is called a <b><i>coordinate system</i></b>.
         <br>
         <br>
-        <img src="../../images/moveFrom2D/report1_example1.png" width="820" height="279" alt="Example 1" style="border:2px solid black; display:block; margin-left: auto; margin-right: auto;" />
-        <br>
+
+        <div class="container" id="container">
+          <div class="infoA" id = "infoA">(a) <b>Cartesian</b></div>
+          <div class="infoB" id = "infoB">(b) <b>Non-Cartesian</b> due to <br> non-orthogonal lines</div>
+          <div class="infoC" id = "infoC">(c) <b>Non-Cartesian</b> due to <br>different lengths of vectors</div>
+          <div class="figure1Desc" id="figure1Desc"><b>Figure 1:</b> Examples of Cartesian and non-Cartesian coordinate Systems</div>
+        </div>
 
         While there are many possible coordinate systems, we will focus solely on <i>Cartesian coordinate systems.</i> <sup>3</sup>
         Cartesian coordinate systems use an <i>orthonormal</i> (orthogonal and unit length) set of vectors (the coordinate basis) emanating from the origin that completely characterize the location of any object in that coordinate system. By
@@ -85,6 +90,17 @@
 
           <!-- End Container for paper -->
   </div>
+
+  <script src="../../js/three.js"></script>
+  <script src="../../js/MTLLoader.js"></script>
+  <script src="../../js/OBJLoader.js"></script>
+  <script src="../../js/OrbitControls.js"></script>
+  <script src="../../js/TransformControls.js"></script>
+  <!-- End ThreeJS Call -->
+
+  <!-- Script Call For Developer Defined ThreeJS Scene Render -->
+  <script src="../../scripts/cartesian_example.js"></script>
+  <!-- End Script Call -->
 
   <!--Navigation bar-->
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
