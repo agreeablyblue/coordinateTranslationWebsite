@@ -102,14 +102,14 @@ header h3 {
 
 .e2{
   position:absolute;
-  top: 13vh;
+  top: 15vh;
   left: 21.2vw;
 }
 
 .e1{
   position:absolute;
   top: 37vh;
-  left: 34vw;
+  left: 32vw;
 }
 
 .yOrigin{
@@ -126,8 +126,8 @@ header h3 {
 
 .xm{
   position:absolute;
-  top: 20.8vh;
-  left: 27.5vw;
+  top: 21.5vh;
+  left: 27vw;
 }
 
 .xy{
@@ -138,8 +138,8 @@ header h3 {
 
 .mPoint{
   position:absolute;
-  top: 24vh;
-  left: 24vw;
+  top: 25vh;
+  left: 23vw;
 }
 
 .xm2{
