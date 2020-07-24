@@ -20,7 +20,7 @@
       rotation is when the airplane is perfectly flat and headed straight North. Rotations from that position are as follows:</p>
     <ul>
       <li>
-        <p>Yaw. This angle represents what "direction" the aircraft is pointed if projected onto a 2-D map. North is 0 degrees, and positive angles move from North to East. So, 0 degree=North, 45 = NOrthEast, 90 = East, 180 = South, and -90 degrees
+        <p>Yaw. This angle represents what "direction" the aircraft is pointed if projected onto a 2-D map. North is 0 degrees, and positive angles move from North to East. So, 0 degree=North, 45 = NorthEast, 90 = East, 180 = South, and -90 degrees
           is west. (For those aeronautical types out there, this is the direction the plane is physically pointing, not actually moving if there is a cross-wind or other disturbances.)</p>
       </li>
       <li>
@@ -37,19 +37,20 @@
     <hr />
 
     <h2 id="relationship-between-ypr-and-euler-angles">Relationship between YPR and Euler Angles</h2>
-    <p>Note that Yaw, Pitch, and Roll are very similar to Euler angles. In fact, if your coordinate system is defined as North (x), East(y), and Down(z) axes, then yaw is a right-handed rotation about the 3rd (z) axis, pitch about the y axis, and
-      roll about the x axis, making YPR and 3-2-1 rotation around the North-East-Down (NED) axes. While this is very convenient, not all people like the NED axes, particularly because the to go up, the <span class="math inline"><em>z</em></span>
-      numbers have to go down, which can be counter-intuitive. So, some people like east-north-up (ENU), or north-west-up (NWU). In both these cases, there is now not a simple mapping to</p>
-
-
+    <p>Note that Yaw, Pitch, and Roll are very similar to Euler angles.  In fact, if your coordinate system is defined as North (x), East(y), and Down(z) axes, then yaw is a right-handed rotation about the 3rd (z) axis, pitch about the y axis, and roll about the x axis, making YPR and 3-2-1 rotation around the North-East-Down (NED) axes.
+    </p>
+    <p>
+      While this is very convenient, not all people like the NED axes, particularly because the to go up, the <i>z</i> numbers have to go down, which can be counter-intuitive.  So, some people like east-north-up (ENU), or north-west-up (NWU).  In both these cases, there is now not a simple mapping to yaw pitch and roll.  For example, consider ENU.  While rotations about the East and North axes correspond with pitch and roll, respectively, yaw is actually a negative rotation about the "up" axis.  Therefore, yaw pitch roll would be something like -3,1,2 rotation (if -3 makes sense as a notation!)  If you choose NWU instead, then yaw-pitch-roll, becomes a -3, -2, 1, once again abusing the -x notation to show that you are rotating in the "negative" direction about the axis.  The point of this is not to enumerate all possible ways to derive yaw, pitch, and roll, but just to show that the choice of axes has a significant impact on the meaning of "YPR".
+    </p>
     <br>
     <br>
-    <a href="3fullRotation.html" class="previous">&larr; Previous</a>
-    <br>
+    <a href="creatingFullRotationIn3D.html" class="previous">&larr; Previous</a>
+    <a href="axisAngle.html" class="next">Next &rarr;</a>
     <br>
     <br>
     <hr />
-
+    <br>
+    <br>
   </div>
 
   <!--Navigation bar-->

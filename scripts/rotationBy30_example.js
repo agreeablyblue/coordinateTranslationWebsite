@@ -18,7 +18,7 @@ window.addEventListener('resize', function() {
   var width = window.innerWidth * 0.55;
   var height = window.innerHeight * 0.55;
   renderer.setSize(width, height);
-  camera.aspect = width / height;
+  camera.aspect = innerWidth / innerHeight;
   camera.updateProjectionMatrix();
 });
 
@@ -74,26 +74,36 @@ group2.position.x = -200;
 scene.add(group1);
 scene.add(group2);
 
-//Creates dots to put on scene
-var geometry = new THREE.SphereGeometry( 8, 8, 8 );
-var material = new THREE.MeshBasicMaterial( { color: 0x000000, wireframe: false } );
-var mesh = new THREE.Mesh( geometry, material );
-var mesh2 = new THREE.Mesh( geometry, material );
-var mesh3 = new THREE.Mesh( geometry, material);
-var mesh4 = new THREE.Mesh( geometry, material);
+//Circles
+var geometry = new THREE.CircleGeometry( 12, 50 );
+var material = new THREE.MeshBasicMaterial( { color: 0x000000 } );
+var circle1 = new THREE.Mesh( geometry, material );
+var circle2 = new THREE.Mesh( geometry, material );
+var circle3 = new THREE.Mesh( geometry, material );
+var circle4 = new THREE.Mesh( geometry, material );
+scene.add(circle1);
+scene.add(circle2);
+scene.add(circle3);
+scene.add(circle4);
 
-mesh.position.z = 200;
-mesh.position.x = -200;
-mesh2.position.z = -450;
-mesh2.position.x = -200;
-mesh3.position.z = -255;
-mesh3.position.x = -700;
-mesh4.position.z = 200;
-mesh4.position.x = 450;
-scene.add(mesh);
-scene.add(mesh2);
-scene.add(mesh3);
-scene.add(mesh4);
+circle1.rotation.y = THREE.Math.degToRad(0);
+circle1.rotation.x = THREE.Math.degToRad(-90);
+circle2.rotation.y = THREE.Math.degToRad(0);
+circle2.rotation.x = THREE.Math.degToRad(-90);
+circle3.rotation.y = THREE.Math.degToRad(0);
+circle3.rotation.x = THREE.Math.degToRad(-90);
+circle4.rotation.y = THREE.Math.degToRad(0);
+circle4.rotation.x = THREE.Math.degToRad(-90);
+
+circle1.position.z = 200;
+circle1.position.x = -200;
+circle2.position.z = -450;
+circle2.position.x = -200;
+circle3.position.z = -255;
+circle3.position.x = -700;
+circle4.position.z = 200;
+circle4.position.x = 450;
+
 //Creats curve to mark 30 degrees
 //Defines points for the arc
 var curve = new THREE.SplineCurve([

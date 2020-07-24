@@ -60,7 +60,7 @@ ul.navMenu{
 
 .navMenu li{
   display: inline-block;
-  padding: 0 10px 0 10px;
+  padding: 0 5px 0 5px;
   font-size: 20px;
 }
 
@@ -77,10 +77,10 @@ ul.navMenu{
 
 ul li ul.dropDown{
   display:none;
-  text-align:center;
+  text-align:left;
   position: absolute;
   background-color: #508DB9;
-  padding: 0 10px 0 10px;
+  padding: 0 5px 0 5px;
 
 }
 
