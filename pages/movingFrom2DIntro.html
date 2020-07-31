@@ -52,7 +52,14 @@
 
     <br>
     <button type="button" class="btnStart" id="btnStart">Play Animation</button>
-    <div class="container" id="container"></div>
+    <br>
+    <br>
+    <div class="container" id="container" style="position:relative;">
+      <div class="leftHandedLabel" style="position:absolute; top:2vh; left: 6.8vw;">Left-handed Rotation</div>
+      <div class="rightHandedLabel" style="position:absolute; top:2vh; left: 32.5vw;">Right-handed Rotation</div>
+      <div class="e3Left" style="position:absolute; top:25.8vh; left: 24vw;"><b>e</b><sup>3</sup></div>
+      <div class="e3Right" style="position:absolute; top:25.8vh; left: 50vw;"><b>e</b><sup>3</sup></div>
+    </div>
 
     <div class="exampleWrapper">
       <div class="exampleText" id="exampleText">A 3-D Coordinate System</div>
@@ -81,6 +88,7 @@
   <!-- End ThreeJS Call -->
 
   <!-- Script Call For Developer Defined ThreeJS Scene Render -->
+  <!-- /coordinateTranslationWebsite/scripts/ -->
   <script src="/coordinateTranslationWebsite/scripts/rotation_degrees.js"></script>
   <!-- End Script Call -->
 

@@ -49,91 +49,12 @@ var arrowHelper1 = new THREE.ArrowHelper(dir1, origin, length, hex, headLength, 
 var arrowHelper2 = new THREE.ArrowHelper(dir2, origin, length, hex, headLength, headWidth);
 var arrowHelper3 = new THREE.ArrowHelper(dir3, origin, length, hex, headLength, headWidth);
 
-var arrowHelper4 = new THREE.ArrowHelper(dir1, origin, length, hex, headLength, headWidth);
-var arrowHelper5 = new THREE.ArrowHelper(dir2, origin, length, hex, headLength, headWidth);
-var arrowHelper6 = new THREE.ArrowHelper(dir3, origin, length, hex, headLength, headWidth);
-
 //Adds the arrow helpers to the scene
 group1.add(arrowHelper1);
 group1.add(arrowHelper2);
-group1.add(arrowHelper3);
 
-group2.add(arrowHelper4);
-group2.add(arrowHelper5);
-group2.add(arrowHelper6);
-
+scene.add(arrowHelper3);
 scene.add(group1);
-scene.add(group2);
-
-group1.position.x = -550;
-group2.position.x = 350;
-//Line 1 creation (line 1 and 2 are rotated during the animation)
-var line1Material = new THREE.LineBasicMaterial({
-  color: 0x000000,
-  linewidth: 10
-});
-var line1Points = [];
-line1Points.push(new THREE.Vector3(0, 0, -400));
-line1Points.push(new THREE.Vector3(0, 0, 0));
-line1Points.push(new THREE.Vector3(0, 0, 0));
-
-var line1Geometry = new THREE.BufferGeometry().setFromPoints(line1Points);
-
-var line1 = new THREE.Line(line1Geometry, line1Material);
-
-//Line 2 creation (line 1 and 2 are rotated during the animation)
-var line2Material = new THREE.LineBasicMaterial({
-  color: 0x000000,
-  linewidth: 10
-});
-var line2Points = [];
-line2Points.push(new THREE.Vector3(400, 0, 0));
-line2Points.push(new THREE.Vector3(0, 0, 0));
-line2Points.push(new THREE.Vector3(0, 0, 0));
-
-var line2Geometry = new THREE.BufferGeometry().setFromPoints(line2Points);
-
-var line2 = new THREE.Line(line2Geometry, line2Material);
-
-
-var line3 = new THREE.Line(line1Geometry, line1Material);
-var line4 = new THREE.Line(line2Geometry, line2Material);
-
-//Defines points for the arc
-var curve = new THREE.SplineCurve([
-  new THREE.Vector2(150, 0),
-  new THREE.Vector2(160, 42.5),
-  new THREE.Vector2(150, 87),
-
-]);
-
-//Creates the arc arc geometry based on defined points
-var curvePoints = curve.getPoints(50);
-var curveGeometry = new THREE.BufferGeometry().setFromPoints(curvePoints);
-
-var curveMaterial = new THREE.LineBasicMaterial({
-  color: 0xff0000
-});
-
-// Create the arc object to add to the scene
-var splineObject = new THREE.Line(curveGeometry, curveMaterial);
-splineObject.rotation.x = THREE.Math.degToRad(-90);
-var splineObject2 = new THREE.Line(curveGeometry, curveMaterial);
-
-//Add lines to the scene
-scene.add(line1);
-scene.add(line2);
-scene.add(line3);
-scene.add(line4);
-
-line1.position.x = -550;
-line2.position.x = -550;
-line3.position.x = 350;
-line4.position.x = 350;
-//Holders to keep track of line 1 and line 2's original orientation before changes are made later in the execution of the program
-var line1Rotation = line1.rotation.y;
-var line2Rotation = line2.rotation.y;
-
 
 //Focuses the camera on the rendered object
 camera.position.y = 650;
@@ -152,7 +73,7 @@ var aniButton = document.getElementById('btnStart');
 var moveCase = 1;
 
 //Div from moving_From_2D.html that holds information on the demonstration provided by the animation
-var exampleText = document.getElementById('exampleText');
+var exampleText = document.getElementById('contentHolder');
 
 //Checks if the animation button has been located, if it has then an event listener checks for clicks by the user
 if (aniButton) {
@@ -161,15 +82,9 @@ if (aniButton) {
     switch (moveCase) {
       case 1:
         //Update the text description of the demo and the animation button
-        exampleText.innerHTML = 'Left-handed and Right-handed rotation about <b>e</b><sub>3</sub> are displayed side by side';
-        aniButton.innerHTML = 'Reset';
-        aniButton.style.background = '#ff0000';
+        exampleText.innerHTML = '(b) After rotation by 30&#176; around z';
+        aniButton.innerHTML = 'Next';
 
-        //Update line colors to highlight the change in position
-        line1.material.color = new THREE.Color(0xff0000);
-        line1.material.needsUpdate = true;
-        line2.material.color = new THREE.Color(0xff0000);
-        line2.material.needsUpdate = true;
 
         //Call the function that animates the first rotation
         animateFirstRotation();
@@ -189,10 +104,15 @@ if (aniButton) {
         break;
 
       case 2:
-        //Reloads the page
-        location.reload();
-        break;
+      aniButton.innerHTML = 'Reset';
+      aniButton.style.background = '#ff0000';
+      moveCase = 3;
+      break;
 
+      case 3:
+      //Reloads the page
+      location.reload();
+      break;
     }
 
   });
@@ -225,26 +145,12 @@ var animateRedraw = function() {
   renderer.render(scene, camera);
 };
 
-//Resets lines 1 and 2 to their original orientations
-var redrawScene = function() {
-  line1.rotation.y = line1Rotation;
-  line2.rotation.y = line2Rotation;
-};
+
 
 //Rotates lines 1 and 2 30 degrees incrementally from their original location
 var firstRotation = function() {
-  if (line1.rotation.y < THREE.Math.degToRad(30)) {
-    line1.rotation.y += THREE.Math.degToRad(0.3);
-  }
-  if (line2.rotation.y < THREE.Math.degToRad(30)) {
-    line2.rotation.y += THREE.Math.degToRad(0.3);
-  }
-
-  if (line3.rotation.y > THREE.Math.degToRad(-30)) {
-    line3.rotation.y += THREE.Math.degToRad(-0.3);
-  }
-  if (line4.rotation.y > THREE.Math.degToRad(-30)) {
-    line4.rotation.y += THREE.Math.degToRad(-0.3);
+  if (group1.rotation.y < THREE.Math.degToRad(30)) {
+    group1.rotation.y += THREE.Math.degToRad(0.3);
   }
 
 };

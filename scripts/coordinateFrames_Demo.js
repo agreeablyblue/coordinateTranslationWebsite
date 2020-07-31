@@ -18,8 +18,9 @@ window.addEventListener('resize', function() {
   var width = window.innerWidth * 0.55;
   var height = window.innerHeight * 0.55;
   renderer.setSize(width, height);
-  camera.aspect = width / height;
+  camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
+  camera.position.y = 1235/camera.aspect;
 });
 
 //Arrow Helpers which act as guide lines for the coordinate system

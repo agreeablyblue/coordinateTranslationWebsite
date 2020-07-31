@@ -13,14 +13,17 @@ renderer.setSize(window.innerWidth * 0.55, window.innerHeight * 0.55);
 container.appendChild(renderer.domElement);
 renderer.setClearColor("#F5F5F5");
 
+
 //Scalable window resizing
 window.addEventListener('resize', function() {
   var width = window.innerWidth * 0.55;
   var height = window.innerHeight * 0.55;
   renderer.setSize(width, height);
-  camera.aspect = width / height;
+  camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
+  camera.position.y = 1235/camera.aspect;
 });
+
 
 //Arrow Helpers which act as guide lines for the coordinate system
 var dir1 = new THREE.Vector3(1, 0, 0);
@@ -91,7 +94,8 @@ scene.add(group3);
 
 
 //Focuses the camera on the rendered object
-camera.position.y = 650;
+
+camera.position.y = 1235/camera.aspect;
 camera.lookAt(0, 0, 0);
 camera.rotation.y = 90 * Math.PI / 180;
 camera.rotation.order = "YXZ";

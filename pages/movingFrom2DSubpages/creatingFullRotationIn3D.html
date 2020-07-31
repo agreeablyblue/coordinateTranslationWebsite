@@ -48,6 +48,17 @@
     <img src="../../images/referenceFrames/report2_example2.png" width="789" height="355" alt="Example 2" style="border:2px solid black; display:block; margin-left: auto; margin-right: auto;" />
     <br>
     <br>
+    <button type="button" class="btnStart" id="btnStart">Play Animation</button>
+    <br>
+    <br>
+    <div class="container" id="container" style="position:relative;">
+      <div class="contentHolder" id="contentHolder" style="position:absolute; top:45vh; left: 21vw;">(a) The original 3-D coordinate system</div>
+    </div>
+
+    <div class="exampleWrapper">
+      <div class="exampleText" id="exampleText"><b>Figure 2:</b> An example of a "flipped order" rotation and why they are not the same.</div>
+    </div>
+    <br>
     <br>
     <br>
     <a href="propertiesOf3DAxes.html" class="previous">&larr; Previous</a>
@@ -57,6 +68,18 @@
     <hr />
   </div>
 
+  <!-- Calls For All ThreeJS Scripts Utilized -->
+  <script src="../../js/three.js"></script>
+  <script src="../../js/MTLLoader.js"></script>
+  <script src="../../js/OBJLoader.js"></script>
+  <script src="../../js/OrbitControls.js"></script>
+  <script src="../../js/TransformControls.js"></script>
+  <!-- End ThreeJS Call -->
+
+  <!-- Script Call For Developer Defined ThreeJS Scene Render -->
+  <!-- /coordinateTranslationWebsite/scripts/ -->
+  <script src="../../scripts/fullRotation_example.js"></script>
+  <!-- End Script Call -->
 
   <!--Navigation bar-->
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
@@ -65,6 +88,7 @@
       $("#nav-placeholder").load("../nav.html");
     });
   </script>
+
 
 </body>
 
