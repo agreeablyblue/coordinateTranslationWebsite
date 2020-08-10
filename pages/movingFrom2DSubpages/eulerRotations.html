@@ -44,7 +44,20 @@
 
 
     <br>
+    <br>
+    <button type="button" class="btnStart" id="btnStart">Play Animation</button>
+    <br>
+    <br>
+    <br>
+    <div class="contentHolder" id="contentHolder" style="margin-left:32%; margin-right: 32%;">Neutral position of the coordinate plane.</div>
+    <div class="container" id="container" style="position:relative;">
 
+    </div>
+
+    <div class="exampleWrapper">
+      <div class="exampleText" id="exampleText"><b>Euler Rotation Example:</b> Y-axis is <span style="color:#008000";>green</span>, X-axis is <span style="color:#0000FF";>blue</span>, and Z-axis is <span style="color:#FF0000";>red</span></div>
+    </div>
+    <br>
 
     <br>
     <br>
@@ -76,6 +89,19 @@
       $("#nav-placeholder").load("../nav.html");
     });
   </script>
+
+  <!-- Calls For All ThreeJS Scripts Utilized -->
+  <script src="../../js/three.js"></script>
+  <script src="../../js/MTLLoader.js"></script>
+  <script src="../../js/OBJLoader.js"></script>
+  <script src="../../js/OrbitControls.js"></script>
+  <script src="../../js/TransformControls.js"></script>
+  <!-- End ThreeJS Call -->
+
+  <!-- Script Call For Developer Defined ThreeJS Scene Render -->
+  <!-- /coordinateTranslationWebsite/scripts/ -->
+  <script src="../../scripts/eulerRotation_example.js"></script>
+  <!-- End Script Call -->
 
 </body>
 

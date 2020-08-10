@@ -221,7 +221,7 @@ var animate = function() {
     y = y * -1;
   }
   camera.rotation.y = 90 * Math.PI / 180;
-  document.getElementById("yAngle").innerHTML = "Plane Y-Axes Rotation = " + y + "°";
+  document.getElementById("yAngle").innerHTML = "Plane Y-Axis Rotation = " + y + "°";
   renderer.render(scene, camera);
 };
 

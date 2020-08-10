@@ -44,15 +44,16 @@
       different location (figure(d)) then it is in figure(a). This means that the same rotation by 30 degrees around axis 3 leads to very different rotations in the world. This is the reason why the ordering of the axes is critical. Therefore, a
       (3-2-1) rotation will be very different from a (1-2-3) rotation, even if the angles applied to each axis are the same in both rotations.</p>
 
-    <br>
-    <img src="../../images/referenceFrames/report2_example2.png" width="789" height="355" alt="Example 2" style="border:2px solid black; display:block; margin-left: auto; margin-right: auto;" />
-    <br>
+    <p>The below example shows two rotations side by side with different orders. The first coordinate system rotates by 30&#176; around <b>e</b><sup>3</sup> (indicated by the red line), then by 40&#176; around <b>e</b><sup>2</sup> (again indicated by the red line).
+       The second coordinate plane does this same rotation but in reverse order (40&#176; around <b>e</b><sup>2</sup> then 30&#176; around <b></b><sup>3</sup>)</p>
     <br>
     <button type="button" class="btnStart" id="btnStart">Play Animation</button>
     <br>
     <br>
+    <br>
     <div class="container" id="container" style="position:relative;">
-      <div class="contentHolder" id="contentHolder" style="position:absolute; top:45vh; left: 21vw;">(a) The original 3-D coordinate system</div>
+      <div class="contentHolder" id="contentHolder" style="position:absolute; top:1vh; left: 5vw;">(a) The original 3-D coordinate system</div>
+      <div class="contentHolder2" id="contentHolder2" style="position:absolute; top:1vh; left: 30vw;">(a) The original 3-D coordinate system</div>
     </div>
 
     <div class="exampleWrapper">

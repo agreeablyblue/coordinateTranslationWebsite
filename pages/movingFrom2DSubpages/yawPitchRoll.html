@@ -34,6 +34,22 @@
     </ul>
 
     <br>
+    <br>
+    <button type="button" class="btnStart" id="btnStart">Play Animation</button>
+    <br>
+    <br>
+    <br>
+    <div class="contentHolder" id="contentHolder" style="margin-left:15%; margin-right: 15%;">( <i>yaw</i> ) The aircrafts position about a vertical axis. If the camera is looking south at the plane (180&#176;) then the planes <b>yaw</b> is 0&#176;</div>
+    <div class="container" id="container" style="position:relative;">
+
+    </div>
+
+    <div class="exampleWrapper">
+      <div class="exampleText" id="exampleText"><b>Figure 2:</b> An example of a "flipped order" rotation and why they are not the same.</div>
+    </div>
+    <br>
+
+    <br>
     <hr />
 
     <h2 id="relationship-between-ypr-and-euler-angles">Relationship between YPR and Euler Angles</h2>
@@ -52,6 +68,20 @@
     <br>
     <br>
   </div>
+
+  <!-- Calls For All ThreeJS Scripts Utilized -->
+  <script src="../../js/three.js"></script>
+  <script src="../../js/MTLLoader.js"></script>
+  <script src="../../js/OBJLoader.js"></script>
+  <script src="../../js/OrbitControls.js"></script>
+  <script src="../../js/TransformControls.js"></script>
+  <!-- End ThreeJS Call -->
+
+  <!-- Script Call For Developer Defined ThreeJS Scene Render -->
+  <!-- /coordinateTranslationWebsite/scripts/ -->
+  <script src="../../scripts/yawPitchRoll_example.js"></script>
+  <!-- End Script Call -->
+
 
   <!--Navigation bar-->
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
