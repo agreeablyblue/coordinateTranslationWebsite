@@ -203,15 +203,26 @@ var resetButton = document.getElementById('btnReset');
 
 //Function animate which calls the renderer to render the scene
 var defaultRotation = new THREE.Quaternion();
+var defaultGridRotation = new THREE.Quaternion();
+
 var defaultCameraRotation = new THREE.Quaternion();
 
 var animate = function() {
   requestAnimationFrame(animate);
 
   //Get Object Y Rotation Angle
+  var angleOfGrid = defaultRotation.angleTo(group.quaternion);
+  var g = THREE.Math.radToDeg(angleOfGrid).toFixed(2);
+
+  gValue = group.rotation.y;
+
+  if(gValue < 0)
+  {
+    g = g * -1;
+  }
+
 
   var angleOfY = defaultRotation.angleTo(mesh.quaternion);
-
   var y = THREE.Math.radToDeg(angleOfY).toFixed(2);
 
   //Check if rotation is positive or negative
@@ -220,8 +231,11 @@ var animate = function() {
   if (yValue < 0) {
     y = y * -1;
   }
+
+  var relative = y - g;
+
   camera.rotation.y = 90 * Math.PI / 180;
-  document.getElementById("yAngle").innerHTML = "Plane Y-Axis Rotation = " + y + "°";
+  document.getElementById("yAngle").innerHTML = "Plane Y-Axis Rotation = " + relative + "°";
   renderer.render(scene, camera);
 };
 
