@@ -232,10 +232,11 @@ var animate = function() {
     y = y * -1;
   }
 
-  var relative = y - g;
+  var relative = y-g;
+
 
   camera.rotation.y = 90 * Math.PI / 180;
-  document.getElementById("yAngle").innerHTML = "Plane Y-Axis Rotation = " + relative + "°";
+  document.getElementById("yAngle").innerHTML = "Relative Y-Axis Rotation = " + relative + "°";
   renderer.render(scene, camera);
 };
 
