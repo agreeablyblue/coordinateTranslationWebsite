@@ -76,6 +76,21 @@ ul.navMenu{
   color: black;
 }
 
+.introduction a:link {
+color: #508DB9;
+text-decoration: none;
+}
+
+.introduction a:visited {
+color: #999999;
+text-decoration: none;
+}
+
+.introduction a:hover {
+color: #999999;
+text-decoration: none;
+}
+
 ul li ul.dropDown{
   display:none;
   text-align:left;
@@ -87,7 +102,7 @@ ul li ul.dropDown{
 
 .dropDown a{
   font-size: 14px;
-  
+
 }
 
 ul li:hover ul.dropDown{

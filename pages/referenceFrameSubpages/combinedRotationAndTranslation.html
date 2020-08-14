@@ -11,7 +11,6 @@
 
 <body>
 
-
   <div class="nav-placeholder" id="nav-placeholder"></div>
 
   <div class="contentWrapper">
@@ -20,6 +19,7 @@
         <h2>3.3&nbsp;Combined rotation and translation</h2>
         Now, let's combine these two operations together. <i>Note that you can <b>never</b> add vectors together unless the numbers inside those vectors correspond with the same vector directions</i>. This is the cause of many mistakes.
         Always, always align axes first! Linguistically, to convert a vector <b>x</b> from my coordinate system <b>x</b><sup>m</sup> to yours (<b>x</b><sup>y</sup>):
+
         <ol>
 
           <li> Rotate the vector so the axes are aligned
@@ -28,36 +28,27 @@
         </ol>
 
         Put mathematically:
-        <br>
-        <br>
+        <br><br>
         <div class="equationSpacing">
           <b>x<sup>y</sup> = <span class="nobr">C<span class="supsub"><i>y</i><br />m</span>&nbsp; x<sup>m</sup> + m<sup>y</sup></b>
         </div>
 
         <br>
         The inverse of this operation can also be expressed as:
-        <br>
-        <br>
+        <br><br>
         <div class="equationSpacing">
           <b>x<sup>m</sup> = x<sup>y</sup> = <span class="nobr">C<span class="supsub"><i>m</i><br />y</span>&nbsp; x<sup>y</sup> + y<sup>m</sup></b>
         </div>
 
         <br>
         Note that m<sup>y</sup> = <span class="nobr">- C<span class="supsub"><i>y</i><br />m</span>&nbsp; y<sup><i>m</i></sup>, so we also have:
-          <br>
-          <br>
+          <br><br>
           <div class="equationSpacing">
             <b>x<sup><i>m</i></sup> = <span class="nobr">C<span class="supsub"><i>m</i><br />y</span> (x<sup>y</sup> + m <sup><i>y</i></sup>)</b>
           </div>
-          <br>
-          <br>
-          Let's walk through an example. In Figure 4, the point <b>x</b><sup>y</sup> is at (3,2), the m coordinate frame axes are rotated 45° from the y coordinate frame axes, and <b>m</b><sup>y</sup> is (1,2). <br>Given this information, we can
-          solve for <b>x</b><sup>m</sup>.
-          <br>
-          <br>
-          <img src="../../images/referenceFramesMatrixImages/matrix1.png" width="453" height="425" alt="Example 1" style=" display:block; margin-left: auto; margin-right: auto;" />
-          <br>
-          <div class="transformationContainer" id="transformationContainer">
+
+          <!-- ThreeJS scene holder. Replaced by image of the scene below, because the scene was stagnant -->
+          <!-- <div class="transformationContainer" id="transformationContainer">
             <div class="cem1" style="position:absolute; top:13.2vh; left:30.5vw;"><span class="nobr"><b>e</b><span class="supsub"><i>m</i><br />1</span></div>
             <div class="cem2" style="position:absolute; top:13.2vh; left:20.5vw;"><span class="nobr"><b>e</b><span class="supsub"><i>m</i><br />2</span></div>
             <div class="cey1" style="position:absolute; top:37vh; left:28vw;"><span class="nobr"><b>e</b><span class="supsub"><i>y</i><br />1</span></div>
@@ -68,32 +59,37 @@
             <div class="cx" style="position:absolute; top:22vh; left:36vw;"><b>X</b></div>
             <div class="cm" style="position:absolute; top:22.5vh; left:24.5vw;"><b>m</b></div>
             <div class="cm" style="position:absolute; top:41.5vh; left:12vw;"><b>Figure 4:</b> Example transformation with both a rotation and origin shift</div>
-          </div>
-          <br>
+          </div> -->
+
+          <br><br>
+          <img src="../../images/referenceFrames_Figure4.png" alt="Example 1" style="max-width:100%; display:block; margin-left: auto; margin-right: auto;" />
+          <br><br>
+
+          Let's walk through an example. In Figure 4, the point <b>x</b><sup>y</sup> is at (3,2), the m coordinate frame axes are rotated 45° from the y <br>coordinate frame axes, and <b>m</b><sup>y</sup> is (1,2). Given this information, we can
+          solve for <b>x</b><sup>m</sup>.
+          <br><br>
+          <img src="../../images/referenceFramesMatrixImages/matrix1.png" alt="Example 1" style="max-width:45%; display:block; margin-left: auto; margin-right: auto;" />
+          <br><br>
 
           Now, let's see if we can go backwards and recover the original vector as well.
 
-          <br>
-          <br>
-          <img src="../../images/referenceFramesMatrixImages/matrix1.png" width="450" height="375" alt="Example 1" style="display:block; margin-left: auto; margin-right: auto;" />
+          <br><br>
+          <img src="../../images/referenceFramesMatrixImages/matrix1.png" alt="Example 1" style=" max-width:45%;display:block; margin-left: auto; margin-right: auto;" />
           <br>
 
-          This demonstrates the capability to move from any coordinate frame to another coordinate frame and back again without loss of information.
+          <p><a name="toc.4.9">
+              This demonstrates the capability to move from any coordinate frame to another coordinate frame and back again without loss of information.
 
-          <br>
-          <br>
-          <div class="container" id="container"></div>
-          <br>
-          <br>
-          <br>
-          <br>
-          <a href="convertingVectors.html" class="previous">&larr; Previous</a>
-          <a href="frameVsObjectRotation.html" class="next">Next &rarr;</a>
+              <ol>
+                <br><br>
+                <div class="container" id="container"></div>
+                <br><br><br><br>
+                <a href="convertingVectors.html" class="previous">&larr; Previous</a>
+                <a href="frameVsObjectRotation.html" class="next">Next &rarr;</a>
 
-          <br>
-          <br>
-          <hr />
-          <br>
+                <br><br>
+                <hr />
+                <br>
   </div>
 
 
@@ -101,12 +97,12 @@
   <script src="../../js/MTLLoader.js"></script>
   <script src="../../js/OBJLoader.js"></script>
   <script src="../../js/OrbitControls.js"></script>
-  <script src="../../js/TransformControls.js"></script>
-  <!-- End ThreeJS Call -->
+  <script src="../../js/TransformControls.js"></script> -->
 
-  <!-- Script Call For Developer Defined ThreeJS Scene Render -->
-  <!-- <script src="../../scripts/render_point.js"></script> -->
-  <script src="../../scripts/transformation_example.js"></script>
+
+
+  <script src="../../scripts/render_point.js"></script>
+  <!-- <script src="../../scripts/transformation_example.js"></script> -->
   <!-- End Script Call -->
 
   <!--Navigation bar-->

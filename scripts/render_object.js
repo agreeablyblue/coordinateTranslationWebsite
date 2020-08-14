@@ -32,7 +32,7 @@ camera.rotation.order = "YXZ";
 
 //TransformControls
 var transform = new THREE.TransformControls(camera, renderer.domElement);
-transform.setRotationSnap(THREE.Math.degToRad(0.25));
+transform.setRotationSnap(THREE.Math.degToRad(15));
 transform.axis = 'Y';
 transform.showX = false;
 transform.showZ = false;
@@ -232,11 +232,14 @@ var animate = function() {
     y = y * -1;
   }
 
-  var relative = y-g;
+  var relative = y - g;
 
+
+
+// "Relative Y-Axis Rotation = " + relative + "°"
 
   camera.rotation.y = 90 * Math.PI / 180;
-  document.getElementById("yAngle").innerHTML = "Relative Y-Axis Rotation = " + relative + "°";
+  document.getElementById("yAngle").innerHTML = "Relative Y-Axis rotation: "  + relative.toFixed(2) + "&#176;";
   renderer.render(scene, camera);
 };
 
