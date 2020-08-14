@@ -25,8 +25,8 @@ window.addEventListener('resize', function() {
 
 //Arrow Helpers which act as guide lines for the coordinate system
 var dir1 = new THREE.Vector3(1, 0, 0);
-var dir2 = new THREE.Vector3(0, 0, -400);
-var dir3 = new THREE.Vector3(-200, 0, 200);
+var dir2 = new THREE.Vector3(0, 1, 0);
+var dir3 = new THREE.Vector3(0, 0, 1);
 
 //Groups to hold arrow Helpers
 var group1 = new THREE.Group();
@@ -55,8 +55,9 @@ var arrowHelper3 = new THREE.ArrowHelper(dir3, origin, length, hex, headLength, 
 //Adds the arrow helpers to the scene
 group1.add(arrowHelper1);
 group1.add(arrowHelper2);
+group1.add(arrowHelper3);
 
-group2.add(arrowHelper3);
+group1.rotation.order = "YXZ";
 
 scene.add(group1);
 scene.add(group2);
@@ -67,14 +68,14 @@ arrowHelper2.setColor("#008000");
 arrowHelper3.setColor("#FF0000");
 
 //Focuses the camera on the rendered object
-camera.position.y = 650;
+camera.position.y = 550;
+camera.position.x = 650;
 camera.lookAt(0, 0, 0);
-camera.rotation.y = 90 * Math.PI / 180;
 camera.rotation.order = "YXZ";
 
 //Function to implement orbit OrbitControls - used for testing, not part of the functionality of the program
 var orbit = new THREE.OrbitControls(camera, renderer.domElement);
-orbit.enabled = false;
+orbit.enabled = true;
 
 //Pointer to the camera movement button
 var aniButton = document.getElementById('btnStart');
@@ -109,14 +110,14 @@ if (aniButton) {
       aniButton.innerHTML = 'Next';
       exampleText.innerHTML = 'After rotation about <span style="color:#0000FF;">X-axis</span> by 30&#176;';
       animateSecondRotation();
-
       moveCase = 3;
       break;
 
       case 3:
       aniButton.innerHTML = 'Reset';
       aniButton.style.background = '#ff0000';
-      exampleText.innerHTML = 'After rotation about <span style="color:#008000;">Y-axis</span> by 30&#176;';
+      //exampleText.innerHTML = 'After rotation about <span style="color:#008000;">Y-axis</span> by 30&#176;';
+      exampleText.innerHTML = group1.rotation.z;
       animateThirdRotation();
       moveCase = 4;
       //Reloads the page
@@ -133,6 +134,8 @@ if (aniButton) {
 //Main function that renders the scene. Called at the bottom of the document to do the initial render of the scene
 var animate = function() {
   requestAnimationFrame(animate);
+  camera.rotation.x = THREE.Math.degToRad(-45);
+
   renderer.render(scene, camera);
 };
 
@@ -151,7 +154,7 @@ var animateSecondRotation = function() {
 };
 
 var animateThirdRotation = function() {
-  requestAnimationFrame(animateSecondRotation);
+  requestAnimationFrame(animateThirdRotation);
   thirdRotation();
   renderer.render(scene, camera);
 };
@@ -167,30 +170,22 @@ var animateRedraw = function() {
 
 //Rotates lines 1 and 2 30 degrees incrementally from their original location
 var firstRotation = function() {
+  group1.add(arrowHelper3);
   if (group1.rotation.y < THREE.Math.degToRad(30)) {
     group1.rotation.y += THREE.Math.degToRad(0.3);
   }
 };
 
-var thirdRotation = function(){
-group2.add(arrowHelper1);
-
-arrowHelper1.rotation.y = THREE.Math.degToRad(30);
-arrowHelper3.rotation.y = THREE.Math.degToRad(60);
-
-  if (group2.rotation.y < THREE.Math.degToRad(60)) {
-    group2.rotation.y += THREE.Math.degToRad(0.3);
+var secondRotation = function(){
+  if (group1.rotation.x < THREE.Math.degToRad(40)) {
+    group1.rotation.x += THREE.Math.degToRad(0.4);
   }
-
 }
 
-var secondRotation = function(){
-group2.add(arrowHelper2);
+var thirdRotation = function(){
 
-arrowHelper2.rotation.y = THREE.Math.degToRad(30);
-
-  if (group2.rotation.y < THREE.Math.degToRad(40)) {
-    group2.rotation.y += THREE.Math.degToRad(0.4);
+  if (group1.rotation.z < THREE.Math.degToRad(30)) {
+    group1.rotation.z += THREE.Math.degToRad(0.3);
   }
 
 }
