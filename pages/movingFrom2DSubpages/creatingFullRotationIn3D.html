@@ -44,13 +44,17 @@
       different location (figure(d)) then it is in figure(a). This means that the same rotation by 30 degrees around axis 3 leads to very different rotations in the world. This is the reason why the ordering of the axes is critical. Therefore, a
       (3-2-1) rotation will be very different from a (1-2-3) rotation, even if the angles applied to each axis are the same in both rotations.</p>
 
-    <p>The below example shows two rotations side by side with different orders. The first coordinate system rotates by 30&#176; around <b>e</b><sup>3</sup> (indicated by the red line), then by 40&#176; around <b>e</b><sup>2</sup> (again indicated by the red line).
-       The second coordinate plane does this same rotation but in reverse order (40&#176; around <b>e</b><sup>2</sup> then 30&#176; around <b></b><sup>3</sup>)</p>
+    <p>The below example shows two rotations side by side with different orders. The first coordinate system rotates by 30&#176; about the <span style="color:#008000;">Y-axis</span> (indicated by the <span style="color:#008000;">green</span> line), then by 40&#176; about the <span style="color:#0000FF;">X-axis</span> (indicated by the <span style="color:#0000FF;">blue</span> line), and finally by 30&#176; about the <span style="color:#FF0000;">Z-axis</span>.
+       The second coordinate system does the same degrees of rotation about each axis but in reverse order (rotation about <span style="color:#FF0000;">Z-axis</span>, <span style="color:#0000FF;">X-axis</span>, then <span style="color:#008000;">Y-axis</span>). This example demonstrates how the results of a rotation can be vastly different based on the order the operations occur. 
+    </p>
+
     <br>
     <button type="button" class="btnStart" id="btnStart">Play Animation</button>
     <br>
     <br>
     <br>
+    <div class="rotationy" id ="rotationy"></div>
+
     <div class="container" id="container" style="position:relative;">
       <div class="contentHolder" id="contentHolder" style="position:absolute; top:1vh; left: 5vw;">(a) The original 3-D coordinate system</div>
       <div class="contentHolder2" id="contentHolder2" style="position:absolute; top:1vh; left: 30vw;">(a) The original 3-D coordinate system</div>

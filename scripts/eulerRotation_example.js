@@ -75,7 +75,7 @@ camera.rotation.order = "YXZ";
 
 //Function to implement orbit OrbitControls - used for testing, not part of the functionality of the program
 var orbit = new THREE.OrbitControls(camera, renderer.domElement);
-orbit.enabled = true;
+orbit.enabled = false;
 
 //Pointer to the camera movement button
 var aniButton = document.getElementById('btnStart');
@@ -96,7 +96,7 @@ if (aniButton) {
         //Update the text description of the demo and the animation button
 
         aniButton.innerHTML = 'Next';
-        exampleText.innerHTML = 'After rotation about <span style="color:#FF0000;">Z-axis</span> by 30&#176;';
+        exampleText.innerHTML = 'After rotation about <span style="color:#008000;">Y-axis</span> by 30&#176;';
 
         //Call the function that animates the first rotation
         animateFirstRotation();
@@ -108,7 +108,7 @@ if (aniButton) {
 
       case 2:
       aniButton.innerHTML = 'Next';
-      exampleText.innerHTML = 'After rotation about <span style="color:#0000FF;">X-axis</span> by 30&#176;';
+      exampleText.innerHTML = 'After rotation about <span style="color:#0000FF;">Z-axis</span> by 30&#176;';
       animateSecondRotation();
       moveCase = 3;
       break;
@@ -116,8 +116,8 @@ if (aniButton) {
       case 3:
       aniButton.innerHTML = 'Reset';
       aniButton.style.background = '#ff0000';
-      //exampleText.innerHTML = 'After rotation about <span style="color:#008000;">Y-axis</span> by 30&#176;';
-      exampleText.innerHTML = group1.rotation.z;
+      exampleText.innerHTML = 'After rotation about <span style="color:#FF0000;">X-axis</span> by 30&#176;';
+
       animateThirdRotation();
       moveCase = 4;
       //Reloads the page
