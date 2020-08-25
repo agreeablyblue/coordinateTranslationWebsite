@@ -234,6 +234,14 @@ var animate = function() {
 
   var relative = y - g;
 
+  if (relative > 180)
+  {
+    relative += -360;
+  }
+  else if (relative < -180)
+  {
+    relative += 360;
+  }
 
 
 // "Relative Y-Axis Rotation = " + relative + "°"
