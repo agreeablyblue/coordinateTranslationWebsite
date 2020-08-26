@@ -245,22 +245,32 @@ ul li:hover ul.dropDown {
   display: block;
 }
 
-/* Three image containers (use 25% for four, and 50% for two, etc) */
-.column {
-  float: left;
-  width: 33.33%;
+@media screen and (min-width: 601px) {
+  .column {
+    float: left;
+    width: 33.33%;
+  }
+    .row::after {
+      content: "";
+      clear: both;
+      display: table;
+    }
+  }
+
+
+/* If the screen size is 600px wide or less */
+@media screen and (max-width: 600px) {
 
 }
+
+/* Three image containers (use 25% for four, and 50% for two, etc) */
+
 
 .equationSpacing{
   margin-left: 22%;
 }
 /* Clear floats after image containers */
-.row::after {
-  content: "";
-  clear: both;
-  display: table;
-}
+
 
 .thirdTable{
   display: inline-block;
