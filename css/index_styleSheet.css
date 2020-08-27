@@ -70,6 +70,19 @@ ul li:hover ul.dropDown{
   }
 
   /* Nav menu section  */
+
+  ul button{
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    text-decoration: none;
+    color: #fff;
+    padding: 8px;
+    font-variant: small-caps;
+    border: none;
+    background: none;
+    font-size: 20px;
+
+  }
+
   .navMenu{
     padding: 5px 0 5px 0;
     text-align: center;
@@ -180,6 +193,18 @@ ul li:hover ul.dropDown{
     margin-top: 15px;
   }
 
+  ul button{
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    text-decoration: none;
+    color: #fff;
+    padding: 8px;
+    font-variant: small-caps;
+    border: none;
+    background: none;
+    font-size: 3.5vw;
+    outline:none;
+
+  }
   .navMenu li{
     display: inline-block;
     padding: 0 5px 0 5px;

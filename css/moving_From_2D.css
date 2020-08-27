@@ -94,6 +94,28 @@ ul li:hover ul.dropDown{
 
 }
 
+/* If the screen size is 600px wide or less */
+@media screen and (max-width: 600px) {
+
+  .container{
+    visibility: hidden;
+    display:none;
+  }
+  .btnStart{
+    visibility: hidden;
+    display:none;
+  }
+  .exampleWrapper{
+    visibility:hidden;
+    display:none;
+  }
+  .contentHolder{
+    visibility:hidden;
+    display:none;
+  }
+
+}
+
 #myBtn {
   display: none; /* Hidden by default */
   position: fixed; /* Fixed/sticky position */

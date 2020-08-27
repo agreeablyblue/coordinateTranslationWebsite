@@ -245,6 +245,7 @@ ul li:hover ul.dropDown {
   display: block;
 }
 
+/* If the screen size is 601px wide or more */
 @media screen and (min-width: 601px) {
   .column {
     float: left;
@@ -261,6 +262,10 @@ ul li:hover ul.dropDown {
 /* If the screen size is 600px wide or less */
 @media screen and (max-width: 600px) {
 
+  .container{
+    visibility: hidden;
+    display:none;
+  }
 }
 
 /* Three image containers (use 25% for four, and 50% for two, etc) */
