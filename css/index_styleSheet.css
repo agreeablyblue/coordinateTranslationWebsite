@@ -168,7 +168,12 @@ ul li:hover ul.dropDown{
   .designerP{
     font-size: 3vw;
   }
-
+  .propertiesOf3DAxesA:after{
+    content: "Props. 3D Axes"
+  }
+  .fullRotationsA:after{
+    content: "Full Rotations"
+  }
   header h2{
     color: black;
     font-weight: 1000;
