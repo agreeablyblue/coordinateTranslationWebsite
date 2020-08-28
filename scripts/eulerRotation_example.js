@@ -50,8 +50,6 @@ var arrowHelper1 = new THREE.ArrowHelper(dir1, origin, length, hex, headLength, 
 var arrowHelper2 = new THREE.ArrowHelper(dir2, origin, length, hex, headLength, headWidth);
 var arrowHelper3 = new THREE.ArrowHelper(dir3, origin, length, hex, headLength, headWidth);
 
-
-
 //Adds the arrow helpers to the scene
 group1.add(arrowHelper1);
 group1.add(arrowHelper2);
@@ -63,6 +61,7 @@ scene.add(group1);
 scene.add(group2);
 scene.add(group3);
 
+//Set the color of the arrowhelpers so users are able to discern between axes
 arrowHelper1.setColor("#0000FF");
 arrowHelper2.setColor("#008000");
 arrowHelper3.setColor("#FF0000");
@@ -94,7 +93,6 @@ if (aniButton) {
     switch (moveCase) {
       case 1:
         //Update the text description of the demo and the animation button
-
         aniButton.innerHTML = 'Next';
         exampleText.innerHTML = 'After rotation about <span style="color:#008000;">Y-axis</span> by 30&#176;';
 
@@ -103,33 +101,45 @@ if (aniButton) {
 
         //Update the move case which is used to keep track of how many times the button has been clicked
         moveCase = 2;
-
         break;
 
       case 2:
+      //Update the text description of the demo and the animation button
       aniButton.innerHTML = 'Next';
       exampleText.innerHTML = 'After rotation about <span style="color:#0000FF;">Z-axis</span> by 30&#176;';
+
+      //Call the function that animates the second rotation
       animateSecondRotation();
+
+      //Update the move case which is used to keep track of how many times the button has been clicked
       moveCase = 3;
       break;
 
       case 3:
+      //Update the text description of the demo and the animation button
       aniButton.innerHTML = 'Reset';
       aniButton.style.background = '#ff0000';
       exampleText.innerHTML = 'After rotation about <span style="color:#FF0000;">X-axis</span> by 30&#176;';
 
+      //Call the function that animates the third rotation
       animateThirdRotation();
-      moveCase = 4;
-      //Reloads the page
 
+      //Update the move case which is used to keep track of how many times the button has been clicked
+      moveCase = 4;
       break;
 
       case 4:
+      //Reloads the webpage
       location.reload();
     }
 
   });
 }
+
+// EXPLANATION OF ANIMATION FUNCTIONS:
+// To create any animation we use two functions, the first one (firstRotation) does the operation on the object (in this case incrementally rotating), and then
+// the second function (animateFirstRotation) calls that first function but also requests an animation frame (requestAnimationFrame(animateFirstRotation)) of it's own function so the compiler knows what's going on.
+// It then rerenders the scene as the functions are doing their work so that the user can see a fluid animation.
 
 //Main function that renders the scene. Called at the bottom of the document to do the initial render of the scene
 var animate = function() {
@@ -153,6 +163,7 @@ var animateSecondRotation = function() {
   renderer.render(scene, camera);
 };
 
+//Function that animates the third rotation of lines 1 and 2
 var animateThirdRotation = function() {
   requestAnimationFrame(animateThirdRotation);
   thirdRotation();
@@ -165,8 +176,6 @@ var animateRedraw = function() {
   redrawScene();
   renderer.render(scene, camera);
 };
-
-
 
 //Rotates lines 1 and 2 30 degrees incrementally from their original location
 var firstRotation = function() {

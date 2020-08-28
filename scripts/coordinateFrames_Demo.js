@@ -80,7 +80,7 @@ arrowHelper5.rotation.y = THREE.Math.degToRad(28);
 arrowHelper3.rotation.y = THREE.Math.degToRad(60);
 arrowHelper4.rotation.y = THREE.Math.degToRad(45);
 
-//Make the Circles
+//Make the Circles which are used in place of dots on the grid
 var geometry = new THREE.CircleGeometry( 8, 50 );
 var material = new THREE.MeshBasicMaterial( { color: 0x000000 } );
 var circle1 = new THREE.Mesh( geometry, material );
@@ -115,8 +115,6 @@ group2.position.x = -200;
 //Adds the arrow helpers to the scene
 scene.add(group1);
 scene.add(group2);
-
-
 
 //Focuses the camera on the rendered object
 camera.position.y = 650;

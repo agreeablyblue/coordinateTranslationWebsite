@@ -41,8 +41,6 @@ var mtlLoader = new THREE.MTLLoader();
 mtlLoader.setPath("../../assets/");
 mtlLoader.load('privateJet.mtl', function(materials) {
 
-
-
   materials.preload();
 
   //OBJ Loader
@@ -128,36 +126,29 @@ if (aniButton) {
   });
 }
 
-//Main function that renders the scene. Called at the bottom of the document to do the initial render of the scene
 var animate = function() {
   requestAnimationFrame(animate);
   renderer.render(scene, camera);
 };
 
-//Function that animates the first rotation of lines 1 and 2
 var animateFirstRotation = function() {
   requestAnimationFrame(animateFirstRotation);
   firstRotation();
   renderer.render(scene, camera);
 };
 
-//Function that animates the second rotation of lines 1 and 2
 var animateSecondRotation = function() {
   requestAnimationFrame(animateSecondRotation);
   secondRotation();
   renderer.render(scene, camera);
 };
 
-//Function that resets the rotation of lines 1 and 2
 var animateRedraw = function() {
   requestAnimationFrame(animateRedraw);
   redrawScene();
   renderer.render(scene, camera);
 };
 
-
-
-//Rotates lines 1 and 2 30 degrees incrementally from their original location
 var firstRotation = function() {
   if (mesh.rotation.x < THREE.Math.degToRad(10)) {
     mesh.rotation.x += THREE.Math.degToRad(0.1);

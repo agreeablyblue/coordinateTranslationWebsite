@@ -107,10 +107,10 @@ if (aniButton) {
     switch (moveCase) {
       case 1:
         //Update the text description of the demo and the animation button
-
         aniButton.innerHTML = 'Next';
         exampleText.innerHTML = 'After rotation about <span style="color:#008000;">Y-axis</span> by 30&#176;';
         exampleText2.innerHTML = 'After rotation about <span style="color:#FF0000;">Z-axis</span> by 30&#176;';
+
         //Call the function that animates the first rotation
         animateFirstRotation();
 
@@ -120,19 +120,29 @@ if (aniButton) {
         break;
 
       case 2:
+      //Update the text description of the demo and the animation button
       aniButton.innerHTML = 'Next';
       exampleText.innerHTML = 'After rotation about <span style="color:#0000FF;">X-axis</span> by 40&#176;';
       exampleText2.innerHTML = 'After rotation about <span style="color:#0000FF;">X-axis</span> by 40&#176;';
+
+      //Call the function that animates the second rotation
       animateSecondRotation();
+
+      //Update the move case which is used to keep track of how many times the button has been clicked
       moveCase = 3;
       break;
 
       case 3:
+      //Update the text description of the demo and the animation button
       aniButton.innerHTML = 'Reset';
       aniButton.style.background = '#ff0000';
       exampleText.innerHTML = 'After rotation about <span style="color:#FF0000;">Z-axis</span> by 30&#176;';
       exampleText2.innerHTML = 'After rotation about <span style="color:#990000;">Y-axis</span> by 30&#176;';
+
+      //Call the function that animates the third rotation
       animateThirdRotation();
+
+      //Update the move case which is used to keep track of how many times the button has been clicked
       moveCase = 4;
       //Reloads the page
 
@@ -144,6 +154,11 @@ if (aniButton) {
 
   });
 }
+
+// EXPLANATION OF ANIMATION FUNCTIONS:
+// To create any animation we use two functions, the first one (firstRotation) does the operation on the object (in this case incrementally rotating), and then
+// the second function (animateFirstRotation) calls that first function but also requests an animation frame (requestAnimationFrame(animateFirstRotation)) of it's own function so the compiler knows what's going on.
+// It then rerenders the scene as the functions are doing their work so that the user can see a fluid animation.
 
 //Main function that renders the scene. Called at the bottom of the document to do the initial render of the scene
 var animate = function() {

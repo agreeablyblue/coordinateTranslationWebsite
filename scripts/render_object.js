@@ -64,6 +64,7 @@ mtlLoader.load('privateJet.mtl', function(materials) {
 
 });
 
+//Skybox that was initially used as the background until the background color was changed to match that of the webpage.
 /*//Skybox
 var materialArray = [];
 var tex_ft = new THREE.TextureLoader().load('../../assets/skybox/clouds1_front.png');
@@ -118,7 +119,7 @@ var material2 = new THREE.MeshBasicMaterial( { color: 0xF92C00 } );
 var material3 = new THREE.MeshBasicMaterial( { color: 0xFF9300 } );
 var material4 = new THREE.MeshBasicMaterial( { color: 0x0000FF } );
 
-//Circle creation
+//Circle creation, used as markers for X, Y, -X, and -Y on the grid
 var circle1 = new THREE.Mesh( geometry, material);
 var circle2 = new THREE.Mesh( geometry, material2 );
 var circle3 = new THREE.Mesh( geometry, material3 );
